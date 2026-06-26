@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:18px;line-height:1.7;color:#36444F;background:#fff;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+  a{color:inherit}
+  ::selection{background:#cfe2f5}
+</style>
+</helmet>
+<div style="font-family:'Figtree',system-ui,sans-serif;color:#36444F;background:#fff;">
+
+  <!-- ===== Utility bar ===== -->
+  <div style="background:#0C2C52;color:#C5D4E6;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+      <a href="tel:+17039395287" style="color:#fff;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:9px;font-size:1rem;letter-spacing:.01em;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        703-939-5287
+      </a>
+      <div style="display:inline-flex;align-items:center;gap:22px;font-size:.95rem;">
+        <span style="display:inline-flex;align-items:center;gap:8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Care available 24/7</span>
+        <a href="https://maps.google.com/?q=20130%20Lakeview%20Center%20Plaza%20Suite%20409%20Ashburn%20VA%2020147" target="_blank" rel="noopener noreferrer" style="color:#C5D4E6;text-decoration:none;display:inline-flex;align-items:center;gap:8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Ashburn, VA</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Masthead ===== -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid #E3E9F0;">
+    <div style="max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:nowrap;">
+      <button onClick="{{ goHome }}" aria-label="Kirpa Home Health Care, home" style="display:inline-flex;align-items:center;gap:12px;background:none;border:0;padding:0;cursor:pointer;flex:none;">
+        <span style="width:46px;height:46px;border-radius:13px;background:#0C2C52;color:#fff;font-weight:800;font-size:1.5rem;display:flex;align-items:center;justify-content:center;flex:none;letter-spacing:-.02em;">K</span>
+        <span style="text-align:left;line-height:1.05;">
+          <span style="display:block;font-size:1.32rem;font-weight:800;color:#0C2C52;letter-spacing:-.02em;">Kirpa</span>
+          <span style="display:block;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#1466B8;">Home Health Care</span>
+        </span>
+      </button>
+
+      <div style="margin-left:auto;display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end;">
+      <nav aria-label="Primary" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;">
+        <a onClick="{{ goServices }}" style="cursor:pointer;color:#0C2C52;font-weight:600;font-size:0.99rem;text-decoration:none;padding:6px 9px;display:inline-block;" style-hover="color:#1466B8">Services<span style="{{ svcUL }}"></span></a>
+        <a onClick="{{ goRequest }}" style="cursor:pointer;color:#0C2C52;font-weight:600;font-size:0.99rem;text-decoration:none;padding:6px 9px;display:inline-block;" style-hover="color:#1466B8">Request a Service<span style="{{ reqUL }}"></span></a>
+        <a onClick="{{ goAbout }}" style="cursor:pointer;color:#0C2C52;font-weight:600;font-size:0.99rem;text-decoration:none;padding:6px 9px;display:inline-block;" style-hover="color:#1466B8">About<span style="{{ aboutUL }}"></span></a>
+        <a onClick="{{ goContact }}" style="cursor:pointer;color:#0C2C52;font-weight:600;font-size:0.99rem;text-decoration:none;padding:6px 9px;display:inline-block;" style-hover="color:#1466B8">Contact<span style="{{ contactUL }}"></span></a>
+        <a onClick="{{ goCareers }}" style="cursor:pointer;color:#0C2C52;font-weight:600;font-size:0.99rem;text-decoration:none;padding:6px 9px;display:inline-block;" style-hover="color:#1466B8">Careers<span style="{{ careersUL }}"></span></a>
+      </nav>
+
+      <a onClick="{{ goRequest }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:8px;background:#DD5A2A;color:#fff;font-weight:700;font-size:0.98rem;padding:12px 18px;border-radius:12px;text-decoration:none;box-shadow:0 6px 16px rgba(221,90,42,.24);white-space:nowrap;" style-hover="background:#C24A1E">
+        Request care
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+  <!-- ============================ HOME ============================ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div>
+
+    <!-- Hero -->
+    <section style="background:linear-gradient(180deg,#F4F8FC 0%,#fff 100%);">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vw,76px) 24px clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:clamp(36px,5vw,64px);align-items:center;">
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:9px;background:#EAF2FB;color:#15589A;font-size:.92rem;font-weight:700;padding:9px 16px;border-radius:999px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Care supervised by nurses
+          </span>
+          <h1 style="color:#0C2C52;font-size:clamp(2.5rem,5.2vw,3.7rem);line-height:1.08;font-weight:800;letter-spacing:-.025em;margin:20px 0 0;max-width:15ch;">Compassionate care, right at home.</h1>
+          <p style="color:#41525c;font-size:clamp(1.1rem,1.5vw,1.28rem);line-height:1.6;margin:20px 0 0;max-width:50ch;">Kirpa Home Health Care helps your loved one stay safe, comfortable, and independent at home — with kind, dependable caregivers and care supervised by nurses.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;">
+            <a onClick="{{ goRequest }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;background:#DD5A2A;color:#fff;font-weight:700;font-size:1.08rem;padding:16px 28px;border-radius:12px;text-decoration:none;box-shadow:0 8px 20px rgba(221,90,42,.26);" style-hover="background:#C24A1E">
+              Request a Service
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="tel:+17039395287" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0C2C52;font-weight:700;font-size:1.08rem;padding:14px 26px;border-radius:12px;text-decoration:none;border:2px solid #D7DFE8;" style-hover="border-color:#1466B8;background:#F4F8FC">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call 703-939-5287
+            </a>
+          </div>
+          <p style="display:inline-flex;align-items:center;gap:9px;color:#5A6873;font-size:1rem;margin:22px 0 0;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            Speak with a real person, any time — we're here 24/7.
+          </p>
+        </div>
+
+        <div style="position:relative;">
+          <div style="border-radius:22px;overflow:hidden;box-shadow:0 24px 60px rgba(12,44,82,.18);aspect-ratio:4/5;background:#dce7f2;">
+            <img src="assets/care-1.jpg" alt="A Kirpa caregiver standing with a smiling senior woman at home" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="position:absolute;left:-16px;bottom:22px;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 14px 34px rgba(12,44,82,.16);display:flex;align-items:center;gap:12px;max-width:248px;">
+            <span style="width:44px;height:44px;border-radius:11px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+            <span style="line-height:1.25;"><strong style="display:block;color:#0C2C52;font-size:1rem;">Available 24/7</strong><span style="color:#5A6873;font-size:.86rem;">Care when you need it</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust strip -->
+    <section style="background:#F4F8FC;border-top:1px solid #E3E9F0;border-bottom:1px solid #E3E9F0;">
+      <div style="max-width:1200px;margin:0 auto;padding:28px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <span style="width:48px;height:48px;border-radius:50%;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <span style="line-height:1.3;"><strong style="display:block;color:#0C2C52;font-size:1.02rem;">Supervised by nurses</strong><span style="color:#5A6873;font-size:.92rem;">RNs, social workers &amp; CNAs</span></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <span style="width:48px;height:48px;border-radius:50%;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+          <span style="line-height:1.3;"><strong style="display:block;color:#0C2C52;font-size:1.02rem;">Available 24/7</strong><span style="color:#5A6873;font-size:.92rem;">Support whenever you need it</span></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <span style="width:48px;height:48px;border-radius:50%;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <span style="line-height:1.3;"><strong style="display:block;color:#0C2C52;font-size:1.02rem;">Medicare &amp; Medicaid</strong><span style="color:#5A6873;font-size:.92rem;">Insurance accepted</span></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <span style="width:48px;height:48px;border-radius:50%;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
+          <span style="line-height:1.3;"><strong style="display:block;color:#0C2C52;font-size:1.02rem;">Locally owned</strong><span style="color:#5A6873;font-size:.92rem;">Proudly serving Ashburn, VA</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section style="background:#fff;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) 24px;">
+        <div style="max-width:60ch;margin:0 auto;text-align:center;">
+          <span style="font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1466B8;">How we help</span>
+          <h2 style="color:#0C2C52;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.12;font-weight:800;letter-spacing:-.02em;margin:12px 0 0;">Personalized home care services</h2>
+          <p style="color:#41525c;font-size:1.18rem;line-height:1.6;margin:16px auto 0;max-width:56ch;">Non-medical home care that helps with the everyday activities of daily life — so your loved one can stay safe, comfortable, and independent at home.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:clamp(36px,4vw,52px);">
+          <!-- Personal Care -->
+          <div onClick="{{ goServices }}" style="cursor:pointer;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);" style-hover="border-color:#BBD3EC;box-shadow:0 16px 40px rgba(12,44,82,.10)">
+            <span style="width:56px;height:56px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.3rem;font-weight:700;margin:16px 0 8px;">Personal Care</h3>
+            <p style="color:#41525c;font-size:1.02rem;margin:0;">Compassionate, hands-on help with the everyday activities that keep daily life comfortable and dignified.</p>
+            <ul style="list-style:none;padding:0;margin:16px 0 0;display:grid;gap:9px;">
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Bathing &amp; dressing</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Eating &amp; oral hygiene</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Safety &amp; fall protection</li>
+            </ul>
+          </div>
+          <!-- Companionship -->
+          <div onClick="{{ goServices }}" style="cursor:pointer;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);" style-hover="border-color:#BBD3EC;box-shadow:0 16px 40px rgba(12,44,82,.10)">
+            <span style="width:56px;height:56px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.3rem;font-weight:700;margin:16px 0 8px;">Companionship</h3>
+            <p style="color:#41525c;font-size:1.02rem;margin:0;">Friendly company and engagement that brighten the day and support emotional well-being.</p>
+            <ul style="list-style:none;padding:0;margin:16px 0 0;display:grid;gap:9px;">
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Conversation &amp; hobbies</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Accompany on walks</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Pet care &amp; feeding</li>
+            </ul>
+          </div>
+          <!-- Homemaking -->
+          <div onClick="{{ goServices }}" style="cursor:pointer;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);" style-hover="border-color:#BBD3EC;box-shadow:0 16px 40px rgba(12,44,82,.10)">
+            <span style="width:56px;height:56px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.3rem;font-weight:700;margin:16px 0 8px;">Homemaking</h3>
+            <p style="color:#41525c;font-size:1.02rem;margin:0;">Light household help that keeps the home tidy, organized, and running smoothly.</p>
+            <ul style="list-style:none;padding:0;margin:16px 0 0;display:grid;gap:9px;">
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Meal preparation</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Laundry &amp; tidying</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Organizing mail</li>
+            </ul>
+          </div>
+          <!-- Errands -->
+          <div onClick="{{ goServices }}" style="cursor:pointer;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);" style-hover="border-color:#BBD3EC;box-shadow:0 16px 40px rgba(12,44,82,.10)">
+            <span style="width:56px;height:56px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/><path d="M5 12h14"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.3rem;font-weight:700;margin:16px 0 8px;">Errands &amp; Transportation</h3>
+            <p style="color:#41525c;font-size:1.02rem;margin:0;">A reliable hand with errands and getting to where you need to be.</p>
+            <ul style="list-style:none;padding:0;margin:16px 0 0;display:grid;gap:9px;">
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Grocery shopping</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Prescription pickups</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Rides to appointments</li>
+            </ul>
+          </div>
+          <!-- Medication Reminders -->
+          <div onClick="{{ goServices }}" style="cursor:pointer;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);" style-hover="border-color:#BBD3EC;box-shadow:0 16px 40px rgba(12,44,82,.10)">
+            <span style="width:56px;height:56px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="8" rx="4"/><path d="M12 8v8"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.3rem;font-weight:700;margin:16px 0 8px;">Medication Reminders</h3>
+            <p style="color:#41525c;font-size:1.02rem;margin:0;">Gentle, timely reminders that help keep medication routines on track.</p>
+            <ul style="list-style:none;padding:0;margin:16px 0 0;display:grid;gap:9px;">
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Timely daily reminders</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Routine support</li>
+            </ul>
+          </div>
+          <!-- Respite -->
+          <div onClick="{{ goServices }}" style="cursor:pointer;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);" style-hover="border-color:#BBD3EC;box-shadow:0 16px 40px rgba(12,44,82,.10)">
+            <span style="width:56px;height:56px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.3rem;font-weight:700;margin:16px 0 8px;">Respite &amp; Family Relief</h3>
+            <p style="color:#41525c;font-size:1.02rem;margin:0;">Short-term relief so family caregivers can rest, knowing their loved one is in caring hands.</p>
+            <ul style="list-style:none;padding:0;margin:16px 0 0;display:grid;gap:9px;">
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Planned or short-notice relief</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg> Peace of mind for families</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:40px;">
+          <a onClick="{{ goServices }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0C2C52;font-weight:700;font-size:1.05rem;padding:14px 26px;border-radius:12px;text-decoration:none;border:2px solid #D7DFE8;" style-hover="border-color:#1466B8;background:#F4F8FC">View all services <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section style="background:#F4F8FC;border-top:1px solid #E3E9F0;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,64px);align-items:center;">
+        <div style="border-radius:22px;overflow:hidden;box-shadow:0 18px 44px rgba(12,44,82,.14);aspect-ratio:5/4;background:#dce7f2;">
+          <img src="assets/consulting.jpg" alt="A Kirpa caregiver with a senior client outdoors" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div>
+          <span style="font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1466B8;">Getting started</span>
+          <h2 style="color:#0C2C52;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.12;font-weight:800;letter-spacing:-.02em;margin:12px 0 0;">Bringing care home is simple</h2>
+          <p style="color:#41525c;font-size:1.18rem;line-height:1.6;margin:14px 0 0;max-width:48ch;">We make it easy to start, and we listen first — so care fits your family.</p>
+          <div style="display:grid;gap:22px;margin-top:30px;">
+            <div style="display:flex;gap:18px;align-items:flex-start;">
+              <span style="width:48px;height:48px;flex:none;border-radius:50%;background:#0C2C52;color:#fff;font-weight:800;font-size:1.15rem;display:flex;align-items:center;justify-content:center;">1</span>
+              <div><h3 style="color:#0C2C52;font-size:1.2rem;font-weight:700;margin:6px 0 4px;">Tell us what you need</h3><p style="color:#41525c;font-size:1.05rem;margin:0;">Share a little about your loved one online or by phone.</p></div>
+            </div>
+            <div style="display:flex;gap:18px;align-items:flex-start;">
+              <span style="width:48px;height:48px;flex:none;border-radius:50%;background:#0C2C52;color:#fff;font-weight:800;font-size:1.15rem;display:flex;align-items:center;justify-content:center;">2</span>
+              <div><h3 style="color:#0C2C52;font-size:1.2rem;font-weight:700;margin:6px 0 4px;">We build a care plan</h3><p style="color:#41525c;font-size:1.05rem;margin:0;">We take time to understand physical, emotional, and spiritual needs, with care supervised by nurses.</p></div>
+            </div>
+            <div style="display:flex;gap:18px;align-items:flex-start;">
+              <span style="width:48px;height:48px;flex:none;border-radius:50%;background:#0C2C52;color:#fff;font-weight:800;font-size:1.15rem;display:flex;align-items:center;justify-content:center;">3</span>
+              <div><h3 style="color:#0C2C52;font-size:1.2rem;font-weight:700;margin:6px 0 4px;">Welcome your caregiver</h3><p style="color:#41525c;font-size:1.05rem;margin:0;">A caregiver from our team supports your loved one at home.</p></div>
+            </div>
+          </div>
+          <a onClick="{{ goRequest }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;background:#DD5A2A;color:#fff;font-weight:700;font-size:1.05rem;padding:15px 26px;border-radius:12px;text-decoration:none;margin-top:30px;box-shadow:0 8px 20px rgba(221,90,42,.24);" style-hover="background:#C24A1E">Request a Service <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why choose -->
+    <section style="background:#fff;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,64px);align-items:center;">
+        <div>
+          <span style="font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1466B8;">Why families choose Kirpa</span>
+          <h2 style="color:#0C2C52;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.12;font-weight:800;letter-spacing:-.02em;margin:12px 0 0;">Care built on compassion and respect</h2>
+          <p style="color:#41525c;font-size:1.18rem;line-height:1.6;margin:14px 0 0;max-width:50ch;">Our goal is to enhance the lives of our patients and their families by providing comfort, support, and dignity.</p>
+          <ul style="list-style:none;padding:0;margin:26px 0 0;display:grid;gap:16px;">
+            <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:30px;height:30px;flex:none;border-radius:50%;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;margin-top:2px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span style="font-size:1.08rem;color:#36444F;"><strong style="color:#0C2C52;">Care supervised by nurses</strong>, with a team that includes registered nurses, social workers, and certified nursing assistants.</span></li>
+            <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:30px;height:30px;flex:none;border-radius:50%;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;margin-top:2px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span style="font-size:1.08rem;color:#36444F;"><strong style="color:#0C2C52;">Care professionals available 24/7</strong>, so support is there when your family needs it.</span></li>
+            <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:30px;height:30px;flex:none;border-radius:50%;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;margin-top:2px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span style="font-size:1.08rem;color:#36444F;"><strong style="color:#0C2C52;">Strong, trustworthy relationships</strong> — we take time to understand each person's needs.</span></li>
+            <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:30px;height:30px;flex:none;border-radius:50%;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;margin-top:2px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span style="font-size:1.08rem;color:#36444F;"><strong style="color:#0C2C52;">We work with Medicare, Medicaid</strong>, and a variety of insurance providers to help make care accessible.</span></li>
+          </ul>
+        </div>
+        <div style="border-radius:22px;overflow:hidden;box-shadow:0 18px 44px rgba(12,44,82,.14);aspect-ratio:5/4;background:#dce7f2;">
+          <img src="assets/care-2.jpg" alt="An adult daughter spending time with her elderly mother at home" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section style="background:#fff;">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px clamp(56px,7vw,96px);">
+        <div style="background:#0C2C52;border-radius:24px;padding:clamp(40px,6vw,72px) clamp(28px,5vw,64px);text-align:center;">
+          <span style="font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7FB1DE;">Ready when you are</span>
+          <h2 style="color:#fff;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.14;font-weight:800;letter-spacing:-.02em;margin:12px 0 0;">Let's find the right care together</h2>
+          <p style="color:#C5D4E6;font-size:1.15rem;line-height:1.6;margin:14px auto 0;max-width:54ch;">Request a consultation and we'll talk through your needs and the care that fits your family.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px;">
+            <a onClick="{{ goRequest }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;background:#DD5A2A;color:#fff;font-weight:700;font-size:1.08rem;padding:16px 28px;border-radius:12px;text-decoration:none;box-shadow:0 8px 22px rgba(221,90,42,.34);" style-hover="background:#C24A1E">Request a Service <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a href="tel:+17039395287" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0C2C52;font-weight:700;font-size:1.08rem;padding:16px 28px;border-radius:12px;text-decoration:none;" style-hover="background:#EAF2FB">Call 703-939-5287</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  </sc-if>
+
+  <!-- ============================ SERVICES ============================ -->
+  <sc-if value="{{ isServices }}">
+  <div>
+    <!-- Page hero -->
+    <section style="background:linear-gradient(180deg,#EEF4FA 0%,#F8FBFD 100%);border-bottom:1px solid #E3E9F0;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(34px,5vw,60px) 24px;">
+        <div style="font-size:.96rem;color:#5A6873;margin-bottom:14px;"><a onClick="{{ goHome }}" style="cursor:pointer;color:#1466B8;text-decoration:none;" style-hover="text-decoration:underline">Home</a> <span style="color:#9AA7B2;margin:0 4px;">/</span> Services</div>
+        <h1 style="color:#0C2C52;font-size:clamp(2.1rem,4.4vw,3rem);line-height:1.1;font-weight:800;letter-spacing:-.022em;margin:0;max-width:20ch;">Care designed around daily life</h1>
+        <p style="color:#41525c;font-size:1.2rem;line-height:1.6;margin:18px 0 0;max-width:62ch;">We provide non-medical home care that assists with the everyday activities of life — helping your loved one live safely and comfortably at home, with care supervised by nurses.</p>
+      </div>
+    </section>
+
+    <!-- Full services -->
+    <section style="background:#fff;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:24px;align-items:start;">
+
+          <!-- Personal Care -->
+          <article style="background:#fff;border:1px solid #E3E9F0;border-radius:18px;padding:32px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);">
+            <div style="display:flex;align-items:center;gap:16px;">
+              <span style="width:58px;height:58px;flex:none;border-radius:15px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+              <h2 style="color:#0C2C52;font-size:1.5rem;font-weight:800;letter-spacing:-.01em;margin:0;">Personal Care</h2>
+            </div>
+            <p style="color:#41525c;font-size:1.05rem;line-height:1.6;margin:16px 0 0;">Compassionate, hands-on help with the everyday activities that keep daily life comfortable and dignified.</p>
+            <ul style="list-style:none;padding:0;margin:18px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px 18px;">
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Bathing</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Dressing</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Oral hygiene</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Eating</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Incontinence care</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Safety &amp; fall protection</li>
+            </ul>
+          </article>
+
+          <!-- Companionship -->
+          <article style="background:#fff;border:1px solid #E3E9F0;border-radius:18px;padding:32px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);">
+            <div style="display:flex;align-items:center;gap:16px;">
+              <span style="width:58px;height:58px;flex:none;border-radius:15px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"/></svg></span>
+              <h2 style="color:#0C2C52;font-size:1.5rem;font-weight:800;letter-spacing:-.01em;margin:0;">Companionship</h2>
+            </div>
+            <p style="color:#41525c;font-size:1.05rem;line-height:1.6;margin:16px 0 0;">Friendly company and engagement that brighten the day and support emotional well-being.</p>
+            <ul style="list-style:none;padding:0;margin:18px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px 18px;">
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Companionship</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Accompany on walks</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Hobbies</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Recreational activities</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Pet care &amp; feeding</li>
+            </ul>
+          </article>
+
+          <!-- Homemaking -->
+          <article style="background:#fff;border:1px solid #E3E9F0;border-radius:18px;padding:32px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);">
+            <div style="display:flex;align-items:center;gap:16px;">
+              <span style="width:58px;height:58px;flex:none;border-radius:15px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
+              <h2 style="color:#0C2C52;font-size:1.5rem;font-weight:800;letter-spacing:-.01em;margin:0;">Homemaking</h2>
+            </div>
+            <p style="color:#41525c;font-size:1.05rem;line-height:1.6;margin:16px 0 0;">Light household help that keeps the home tidy, organized, and running smoothly.</p>
+            <ul style="list-style:none;padding:0;margin:18px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px 18px;">
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Meal preparation</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Laundry</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Bed making</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Dusting &amp; mopping</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Organizing mail</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Household activities</li>
+            </ul>
+          </article>
+
+          <!-- Errands & Transportation -->
+          <article style="background:#fff;border:1px solid #E3E9F0;border-radius:18px;padding:32px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);">
+            <div style="display:flex;align-items:center;gap:16px;">
+              <span style="width:58px;height:58px;flex:none;border-radius:15px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/><path d="M5 12h14"/></svg></span>
+              <h2 style="color:#0C2C52;font-size:1.5rem;font-weight:800;letter-spacing:-.01em;margin:0;">Errands &amp; Transportation</h2>
+            </div>
+            <p style="color:#41525c;font-size:1.05rem;line-height:1.6;margin:16px 0 0;">A reliable hand with errands and getting to where you need to be.</p>
+            <ul style="list-style:none;padding:0;margin:18px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px 18px;">
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Errands</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Grocery shopping</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Prescription pickups</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Post office visits</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Limited transportation</li>
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Rides to appointments</li>
+            </ul>
+          </article>
+
+          <!-- Medication Reminders -->
+          <article style="background:#fff;border:1px solid #E3E9F0;border-radius:18px;padding:32px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);">
+            <div style="display:flex;align-items:center;gap:16px;">
+              <span style="width:58px;height:58px;flex:none;border-radius:15px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="8" rx="4"/><path d="M12 8v8"/></svg></span>
+              <h2 style="color:#0C2C52;font-size:1.5rem;font-weight:800;letter-spacing:-.01em;margin:0;">Medication Reminders</h2>
+            </div>
+            <p style="color:#41525c;font-size:1.05rem;line-height:1.6;margin:16px 0 0;">Gentle, timely reminders that help keep medication routines on track, so nothing important is missed.</p>
+            <ul style="list-style:none;padding:0;margin:18px 0 0;display:grid;gap:11px;">
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Timely medication reminders</li>
+            </ul>
+          </article>
+
+          <!-- Respite & Family Relief -->
+          <article style="background:#fff;border:1px solid #E3E9F0;border-radius:18px;padding:32px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);">
+            <div style="display:flex;align-items:center;gap:16px;">
+              <span style="width:58px;height:58px;flex:none;border-radius:15px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+              <h2 style="color:#0C2C52;font-size:1.5rem;font-weight:800;letter-spacing:-.01em;margin:0;">Respite &amp; Family Relief</h2>
+            </div>
+            <p style="color:#41525c;font-size:1.05rem;line-height:1.6;margin:16px 0 0;">Short-term relief so family caregivers can rest and recharge, knowing their loved one is in caring hands.</p>
+            <ul style="list-style:none;padding:0;margin:18px 0 0;display:grid;gap:11px;">
+              <li style="display:flex;gap:10px;align-items:center;color:#36444F;font-size:1.02rem;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M20 6 9 17l-5-5"/></svg>Respite &amp; relief for families</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach split -->
+    <section style="background:#F4F8FC;border-top:1px solid #E3E9F0;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,64px);align-items:center;">
+        <div>
+          <span style="font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1466B8;">Our approach</span>
+          <h2 style="color:#0C2C52;font-size:clamp(1.8rem,3.4vw,2.4rem);line-height:1.14;font-weight:800;letter-spacing:-.02em;margin:12px 0 0;">Thoughtful, nurse-supervised care</h2>
+          <p style="color:#41525c;font-size:1.16rem;line-height:1.6;margin:14px 0 0;max-width:50ch;">We take time to understand each person's physical, emotional, and spiritual needs, and we build strong, trustworthy relationships with the families we serve.</p>
+          <ul style="list-style:none;padding:0;margin:24px 0 0;display:grid;gap:14px;">
+            <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:30px;height:30px;flex:none;border-radius:50%;background:#fff;border:1px solid #D7E3EF;color:#1466B8;display:flex;align-items:center;justify-content:center;margin-top:2px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span style="font-size:1.06rem;color:#36444F;">Care supervised by nurses</span></li>
+            <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:30px;height:30px;flex:none;border-radius:50%;background:#fff;border:1px solid #D7E3EF;color:#1466B8;display:flex;align-items:center;justify-content:center;margin-top:2px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span style="font-size:1.06rem;color:#36444F;">A team of registered nurses, social workers, and certified nursing assistants</span></li>
+            <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:30px;height:30px;flex:none;border-radius:50%;background:#fff;border:1px solid #D7E3EF;color:#1466B8;display:flex;align-items:center;justify-content:center;margin-top:2px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span style="font-size:1.06rem;color:#36444F;">Care professionals available 24/7</span></li>
+            <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:30px;height:30px;flex:none;border-radius:50%;background:#fff;border:1px solid #D7E3EF;color:#1466B8;display:flex;align-items:center;justify-content:center;margin-top:2px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span style="font-size:1.06rem;color:#36444F;">We work with a variety of insurance providers, including Medicare and Medicaid</span></li>
+          </ul>
+          <a onClick="{{ goRequest }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;background:#DD5A2A;color:#fff;font-weight:700;font-size:1.05rem;padding:15px 26px;border-radius:12px;text-decoration:none;margin-top:28px;box-shadow:0 8px 20px rgba(221,90,42,.24);" style-hover="background:#C24A1E">Request a Service <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+        <div style="border-radius:22px;overflow:hidden;box-shadow:0 18px 44px rgba(12,44,82,.14);aspect-ratio:5/4;background:#dce7f2;">
+          <img src="assets/consulting.jpg" alt="A Kirpa caregiver supporting a senior client outdoors" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section style="background:#fff;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px;">
+        <div style="background:#0C2C52;border-radius:24px;padding:clamp(40px,6vw,68px) clamp(28px,5vw,64px);text-align:center;">
+          <h2 style="color:#fff;font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.14;font-weight:800;letter-spacing:-.02em;margin:0;">Not sure which service fits?</h2>
+          <p style="color:#C5D4E6;font-size:1.14rem;line-height:1.6;margin:14px auto 0;max-width:52ch;">Tell us about your situation and we'll help you find the right care.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:28px;">
+            <a onClick="{{ goRequest }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;background:#DD5A2A;color:#fff;font-weight:700;font-size:1.08rem;padding:16px 28px;border-radius:12px;text-decoration:none;box-shadow:0 8px 22px rgba(221,90,42,.34);" style-hover="background:#C24A1E">Request a Service <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a href="tel:+17039395287" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0C2C52;font-weight:700;font-size:1.08rem;padding:16px 28px;border-radius:12px;text-decoration:none;" style-hover="background:#EAF2FB">Call 703-939-5287</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+  <!-- ============================ REQUEST ============================ -->
+  <sc-if value="{{ isRequest }}">
+  <div>
+    <!-- Page hero -->
+    <section style="background:linear-gradient(180deg,#EEF4FA 0%,#F8FBFD 100%);border-bottom:1px solid #E3E9F0;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(34px,5vw,60px) 24px;">
+        <div style="font-size:.96rem;color:#5A6873;margin-bottom:14px;"><a onClick="{{ goHome }}" style="cursor:pointer;color:#1466B8;text-decoration:none;" style-hover="text-decoration:underline">Home</a> <span style="color:#9AA7B2;margin:0 4px;">/</span> Request a Service</div>
+        <h1 style="color:#0C2C52;font-size:clamp(2.1rem,4.4vw,3rem);line-height:1.1;font-weight:800;letter-spacing:-.022em;margin:0;max-width:20ch;">Request care in just a few minutes</h1>
+        <p style="color:#41525c;font-size:1.2rem;line-height:1.6;margin:18px 0 0;max-width:62ch;">Tell us a little about your loved one's needs and our team will reach out to talk through the right care plan. Prefer to talk now? Call <a href="tel:+17039395287" style="color:#15589A;font-weight:700;text-decoration:none;">703-939-5287</a>.</p>
+      </div>
+    </section>
+
+    <section style="background:#fff;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(40px,5vw,72px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,44px);align-items:start;">
+
+        <!-- Form column -->
+        <div style="flex:2;min-width:300px;">
+          <!-- Success -->
+          <sc-if value="{{ sent }}">
+            <div style="background:#fff;border:1px solid #E3E9F0;border-radius:20px;box-shadow:0 10px 30px rgba(12,44,82,.07);padding:clamp(32px,5vw,52px);text-align:center;">
+              <span style="width:78px;height:78px;border-radius:50%;background:#E7F6EC;color:#1A9E4B;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <h2 style="color:#0C2C52;font-size:1.7rem;font-weight:800;margin:0 0 10px;">Thank you — your request has been sent!</h2>
+              <p style="color:#41525c;font-size:1.1rem;line-height:1.6;margin:0 auto;max-width:46ch;">A member of our team will reach out to talk through your needs and the right care plan. If you'd like to speak with us sooner, call <a href="tel:+17039395287" style="color:#15589A;font-weight:700;text-decoration:none;">703-939-5287</a>.</p>
+            </div>
+          </sc-if>
+
+          <!-- Form -->
+          <sc-if value="{{ notSent }}">
+          <form onSubmit="{{ submitRequest }}" style="background:#fff;border:1px solid #E3E9F0;border-radius:20px;box-shadow:0 10px 30px rgba(12,44,82,.07);padding:clamp(24px,4vw,40px);">
+
+            <!-- Step 1 -->
+            <div style="margin-bottom:28px;">
+              <div style="display:flex;align-items:center;gap:12px;"><span style="width:30px;height:30px;border-radius:50%;background:#0C2C52;color:#fff;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center;flex:none;">1</span><h2 style="color:#0C2C52;font-size:1.32rem;font-weight:800;margin:0;">What type of care are you looking for?</h2></div>
+              <p style="color:#5A6873;font-size:1rem;margin:8px 0 16px;padding-left:42px;">Choose what fits best — we'll tailor the details together.</p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;">
+                <div onClick="{{ selPersonal }}" style="{{ cPersonal }}"><span style="width:40px;height:40px;border-radius:11px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><strong style="color:#0C2C52;font-size:1.02rem;font-weight:700;">Personal Care</strong></div>
+                <div onClick="{{ selCompanion }}" style="{{ cCompanion }}"><span style="width:40px;height:40px;border-radius:11px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"/></svg></span><strong style="color:#0C2C52;font-size:1.02rem;font-weight:700;">Companionship</strong></div>
+                <div onClick="{{ selHome }}" style="{{ cHome }}"><span style="width:40px;height:40px;border-radius:11px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span><strong style="color:#0C2C52;font-size:1.02rem;font-weight:700;">Homemaking</strong></div>
+                <div onClick="{{ selErrands }}" style="{{ cErrands }}"><span style="width:40px;height:40px;border-radius:11px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/><path d="M5 12h14"/></svg></span><strong style="color:#0C2C52;font-size:1.02rem;font-weight:700;">Errands &amp; Transport</strong></div>
+                <div onClick="{{ selMeds }}" style="{{ cMeds }}"><span style="width:40px;height:40px;border-radius:11px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="8" rx="4"/><path d="M12 8v8"/></svg></span><strong style="color:#0C2C52;font-size:1.02rem;font-weight:700;">Medication Reminders</strong></div>
+                <div onClick="{{ selRespite }}" style="{{ cRespite }}"><span style="width:40px;height:40px;border-radius:11px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><strong style="color:#0C2C52;font-size:1.02rem;font-weight:700;">Respite &amp; Relief</strong></div>
+                <div onClick="{{ selUnsure }}" style="{{ cUnsure }}"><span style="width:40px;height:40px;border-radius:11px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.7-2.5 2-2.5 3.5"/><path d="M12 17h.01"/></svg></span><strong style="color:#0C2C52;font-size:1.02rem;font-weight:700;">Not sure yet</strong></div>
+              </div>
+            </div>
+
+            <hr style="border:0;border-top:1px solid #E3E9F0;margin:26px 0;">
+
+            <!-- Step 2 -->
+            <div style="margin-bottom:28px;">
+              <div style="display:flex;align-items:center;gap:12px;"><span style="width:30px;height:30px;border-radius:50%;background:#0C2C52;color:#fff;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center;flex:none;">2</span><h2 style="color:#0C2C52;font-size:1.32rem;font-weight:800;margin:0;">Who is the care for?</h2></div>
+              <p style="color:#5A6873;font-size:1rem;margin:8px 0 16px;padding-left:42px;">A few quick details about the person who will receive care.</p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+                <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Care is for <span style="color:#DD5A2A;">*</span></span><select style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"><option value="">Select one…</option><option>My parent</option><option>My spouse / partner</option><option>Myself</option><option>Another family member</option><option>A client / patient</option></select></label>
+                <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Care recipient's first name</span><input type="text" placeholder="e.g. Margaret" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></label>
+                <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">City / area <span style="color:#DD5A2A;">*</span></span><input type="text" placeholder="e.g. Ashburn, VA" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></label>
+                <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Estimated hours needed</span><select style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"><option value="">Select…</option><option>A few hours a week</option><option>Several hours, a few days a week</option><option>Daily (part-time)</option><option>Daily (full-time)</option><option>Nighttime hours</option><option>Around the clock</option><option>Not sure yet</option></select></label>
+              </div>
+            </div>
+
+            <hr style="border:0;border-top:1px solid #E3E9F0;margin:26px 0;">
+
+            <!-- Step 3 -->
+            <div>
+              <div style="display:flex;align-items:center;gap:12px;"><span style="width:30px;height:30px;border-radius:50%;background:#0C2C52;color:#fff;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center;flex:none;">3</span><h2 style="color:#0C2C52;font-size:1.32rem;font-weight:800;margin:0;">How can we reach you?</h2></div>
+              <p style="color:#5A6873;font-size:1rem;margin:8px 0 16px;padding-left:42px;">We'll use this only to follow up about care.</p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+                <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Your name <span style="color:#DD5A2A;">*</span></span><input type="text" placeholder="First and last name" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></label>
+                <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Phone <span style="color:#DD5A2A;">*</span></span><input type="tel" placeholder="(703) 555-0100" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></label>
+                <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Email <span style="color:#DD5A2A;">*</span></span><input type="email" placeholder="you@example.com" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></label>
+                <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Best time to reach you</span><select style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"><option value="">Select…</option><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Anytime</option></select></label>
+                <label style="display:flex;flex-direction:column;gap:6px;grid-column:1/-1;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Anything else we should know? <span style="color:#5A6873;font-weight:500;">(optional)</span></span><textarea placeholder="Mobility, conditions, languages spoken, schedule notes, insurance questions…" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;min-height:120px;resize:vertical;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></textarea></label>
+              </div>
+            </div>
+
+            <label style="display:flex;gap:12px;align-items:flex-start;margin-top:22px;font-size:1rem;color:#36444F;cursor:pointer;"><input type="checkbox" style="width:22px;height:22px;margin-top:2px;flex:none;accent-color:#1466B8;"><span>I agree to be contacted by Kirpa Home Health Care about my request. <span style="color:#DD5A2A;">*</span></span></label>
+
+            <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:26px;">
+              <button type="submit" style="display:inline-flex;align-items:center;gap:10px;background:#DD5A2A;color:#fff;font-weight:700;font-size:1.1rem;padding:16px 30px;border-radius:12px;border:0;cursor:pointer;box-shadow:0 8px 20px rgba(221,90,42,.26);" style-hover="background:#C24A1E">Submit Request <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+              <span style="display:inline-flex;align-items:center;gap:7px;color:#5A6873;font-size:.95rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Your information is kept private.</span>
+            </div>
+          </form>
+          </sc-if>
+        </div>
+
+        <!-- Aside -->
+        <aside style="flex:1;min-width:260px;display:grid;gap:18px;align-content:start;">
+          <div style="background:#0C2C52;color:#C5D4E6;border-radius:18px;padding:28px;">
+            <h3 style="color:#fff;font-size:1.2rem;font-weight:800;margin:0 0 18px;">What happens next</h3>
+            <ul style="list-style:none;padding:0;margin:0;display:grid;gap:18px;">
+              <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:40px;height:40px;border-radius:11px;background:rgba(127,177,222,.18);color:#7FB1DE;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></span><span><strong style="color:#fff;display:block;font-size:1.04rem;">We review your request</strong><span style="font-size:.96rem;">So we understand your situation.</span></span></li>
+              <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:40px;height:40px;border-radius:11px;background:rgba(127,177,222,.18);color:#7FB1DE;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span><strong style="color:#fff;display:block;font-size:1.04rem;">We reach out to you</strong><span style="font-size:.96rem;">To talk through needs and options.</span></span></li>
+              <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:40px;height:40px;border-radius:11px;background:rgba(127,177,222,.18);color:#7FB1DE;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span><strong style="color:#fff;display:block;font-size:1.04rem;">We arrange care</strong><span style="font-size:.96rem;">A caregiver from our team supports your loved one.</span></span></li>
+            </ul>
+          </div>
+          <div style="background:#fff;border:1px solid #E3E9F0;border-radius:18px;padding:26px;text-align:center;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+            <p style="color:#5A6873;font-size:1rem;margin:0;">Prefer to speak with someone?</p>
+            <a href="tel:+17039395287" style="display:block;font-size:1.6rem;font-weight:800;color:#15589A;text-decoration:none;margin:6px 0 14px;">703-939-5287</a>
+            <a href="tel:+17039395287" style="display:inline-flex;width:100%;box-sizing:border-box;align-items:center;justify-content:center;gap:9px;background:#fff;color:#0C2C52;font-weight:700;font-size:1.04rem;padding:13px 20px;border-radius:12px;border:2px solid #D7DFE8;text-decoration:none;" style-hover="border-color:#1466B8;background:#F4F8FC"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</a>
+            <p style="color:#5A6873;font-size:.92rem;margin:14px 0 0;">Care professionals available 24/7.</p>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </div>
+  </sc-if>
+  <!-- ============================ ABOUT ============================ -->
+  <sc-if value="{{ isAbout }}">
+  <div>
+    <!-- Page hero -->
+    <section style="background:linear-gradient(180deg,#EEF4FA 0%,#F8FBFD 100%);border-bottom:1px solid #E3E9F0;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(34px,5vw,60px) 24px;">
+        <div style="font-size:.96rem;color:#5A6873;margin-bottom:14px;"><a onClick="{{ goHome }}" style="cursor:pointer;color:#1466B8;text-decoration:none;" style-hover="text-decoration:underline">Home</a> <span style="color:#9AA7B2;margin:0 4px;">/</span> About</div>
+        <h1 style="color:#0C2C52;font-size:clamp(2.1rem,4.4vw,3rem);line-height:1.1;font-weight:800;letter-spacing:-.022em;margin:0;max-width:20ch;">Dedicated to exceptional care</h1>
+        <p style="color:#41525c;font-size:1.2rem;line-height:1.6;margin:18px 0 0;max-width:62ch;">Kirpa Home Health Care is a dedicated healthcare provider committed to delivering exceptional care to those in need — in the comfort of their own homes.</p>
+      </div>
+    </section>
+
+    <!-- Who we are -->
+    <section style="background:#fff;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,64px);align-items:center;">
+        <div>
+          <span style="font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1466B8;">Who we are</span>
+          <h2 style="color:#0C2C52;font-size:clamp(1.8rem,3.4vw,2.4rem);line-height:1.14;font-weight:800;letter-spacing:-.02em;margin:12px 0 0;">Care that feels like family</h2>
+          <p style="color:#41525c;font-size:1.12rem;line-height:1.65;margin:16px 0 0;">At Kirpa Home Health Care, we are dedicated to providing exceptional care and support to individuals and families in the comfort of their own homes. We believe everyone deserves to be treated with compassion and respect.</p>
+          <p style="color:#41525c;font-size:1.12rem;line-height:1.65;margin:16px 0 0;">Our goal is to enhance the lives of our patients and their families by providing comfort, support, and dignity. Our team includes registered nurses, social workers, and certified nursing assistants, and our care professionals are available 24/7. We take time to understand each person's physical, emotional, and spiritual needs, and we work with a variety of insurance providers, including Medicare and Medicaid, to help make our services accessible.</p>
+          <a onClick="{{ goRequest }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;background:#DD5A2A;color:#fff;font-weight:700;font-size:1.05rem;padding:15px 26px;border-radius:12px;text-decoration:none;margin-top:26px;box-shadow:0 8px 20px rgba(221,90,42,.24);" style-hover="background:#C24A1E">Request a Service <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+        <div style="border-radius:22px;overflow:hidden;box-shadow:0 18px 44px rgba(12,44,82,.14);aspect-ratio:5/4;background:#dce7f2;">
+          <img src="assets/care-2.jpg" alt="An adult daughter spending time with her elderly mother at home" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section style="background:#F4F8FC;border-top:1px solid #E3E9F0;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px;">
+        <div style="text-align:center;max-width:50ch;margin:0 auto;">
+          <span style="font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1466B8;">What we stand for</span>
+          <h2 style="color:#0C2C52;font-size:clamp(1.8rem,3.4vw,2.4rem);line-height:1.14;font-weight:800;letter-spacing:-.02em;margin:12px 0 0;">Our values</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:clamp(32px,4vw,48px);">
+          <div style="background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+            <span style="width:54px;height:54px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.22rem;font-weight:700;margin:16px 0 8px;">Compassion &amp; respect</h3>
+            <p style="color:#41525c;font-size:1.02rem;line-height:1.6;margin:0;">Everyone deserves to be treated with compassion and respect — it guides everything we do.</p>
+          </div>
+          <div style="background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+            <span style="width:54px;height:54px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.22rem;font-weight:700;margin:16px 0 8px;">Comfort, support &amp; dignity</h3>
+            <p style="color:#41525c;font-size:1.02rem;line-height:1.6;margin:0;">Our goal is to enhance the lives of our patients and their families by providing comfort, support, and dignity.</p>
+          </div>
+          <div style="background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+            <span style="width:54px;height:54px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.22rem;font-weight:700;margin:16px 0 8px;">Trustworthy relationships</h3>
+            <p style="color:#41525c;font-size:1.02rem;line-height:1.6;margin:0;">We take time to build strong, trustworthy relationships with the people and families we serve.</p>
+          </div>
+          <div style="background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+            <span style="width:54px;height:54px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.22rem;font-weight:700;margin:16px 0 8px;">Care at home</h3>
+            <p style="color:#41525c;font-size:1.02rem;line-height:1.6;margin:0;">We support individuals and families in the comfort of their own homes, where they feel most themselves.</p>
+          </div>
+          <div style="background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+            <span style="width:54px;height:54px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v6M9 11h6"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.22rem;font-weight:700;margin:16px 0 8px;">Accessible care</h3>
+            <p style="color:#41525c;font-size:1.02rem;line-height:1.6;margin:0;">We work with a variety of insurance providers, including Medicare and Medicaid, to help make care accessible.</p>
+          </div>
+          <div style="background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+            <span style="width:54px;height:54px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.22rem;font-weight:700;margin:16px 0 8px;">Whole-person care</h3>
+            <p style="color:#41525c;font-size:1.02rem;line-height:1.6;margin:0;">We take time to understand each person's physical, emotional, and spiritual needs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Facts band -->
+    <section style="background:#0C2C52;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(40px,5vw,64px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;text-align:center;">
+        <div><div style="color:#fff;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;line-height:1.1;">24/7</div><div style="color:#A8BBD2;font-size:1rem;margin-top:8px;">Care professionals available</div></div>
+        <div><div style="color:#fff;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;line-height:1.1;">Nurse-led</div><div style="color:#A8BBD2;font-size:1rem;margin-top:8px;">Care supervised by nurses</div></div>
+        <div><div style="color:#fff;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;line-height:1.1;">Medicare &amp; Medicaid</div><div style="color:#A8BBD2;font-size:1rem;margin-top:8px;">Insurance accepted</div></div>
+        <div><div style="color:#fff;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;line-height:1.1;">Ashburn, VA</div><div style="color:#A8BBD2;font-size:1rem;margin-top:8px;">Serving our community</div></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="background:#fff;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px;">
+        <div style="background:#F4F8FC;border:1px solid #E3E9F0;border-radius:24px;padding:clamp(40px,6vw,68px) clamp(28px,5vw,64px);text-align:center;">
+          <h2 style="color:#0C2C52;font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.14;font-weight:800;letter-spacing:-.02em;margin:0;">We'd be honored to care for your family</h2>
+          <p style="color:#41525c;font-size:1.14rem;line-height:1.6;margin:14px auto 0;max-width:48ch;">Let's talk about what your loved one needs.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:28px;">
+            <a onClick="{{ goRequest }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;background:#DD5A2A;color:#fff;font-weight:700;font-size:1.08rem;padding:16px 28px;border-radius:12px;text-decoration:none;box-shadow:0 8px 22px rgba(221,90,42,.28);" style-hover="background:#C24A1E">Request a Service <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0C2C52;font-weight:700;font-size:1.08rem;padding:16px 28px;border-radius:12px;text-decoration:none;border:2px solid #D7DFE8;" style-hover="border-color:#1466B8;background:#fff">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+  <!-- ============================ CONTACT ============================ -->
+  <sc-if value="{{ isContact }}">
+  <div>
+    <!-- Page hero -->
+    <section style="background:linear-gradient(180deg,#EEF4FA 0%,#F8FBFD 100%);border-bottom:1px solid #E3E9F0;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(34px,5vw,60px) 24px;">
+        <div style="font-size:.96rem;color:#5A6873;margin-bottom:14px;"><a onClick="{{ goHome }}" style="cursor:pointer;color:#1466B8;text-decoration:none;" style-hover="text-decoration:underline">Home</a> <span style="color:#9AA7B2;margin:0 4px;">/</span> Contact</div>
+        <h1 style="color:#0C2C52;font-size:clamp(2.1rem,4.4vw,3rem);line-height:1.1;font-weight:800;letter-spacing:-.022em;margin:0;max-width:20ch;">We're here to help</h1>
+        <p style="color:#41525c;font-size:1.2rem;line-height:1.6;margin:18px 0 0;max-width:62ch;">Questions about care or careers? Reach out any way you like — a real person will get back to you.</p>
+      </div>
+    </section>
+
+    <section style="background:#fff;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(40px,5vw,72px) 24px;">
+
+        <!-- Contact method cards -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-bottom:clamp(32px,4vw,48px);">
+          <a href="tel:+17039395287" style="display:block;text-decoration:none;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);" style-hover="border-color:#BBD3EC;box-shadow:0 16px 40px rgba(12,44,82,.10)">
+            <span style="width:54px;height:54px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.25rem;font-weight:700;margin:16px 0 6px;">Call us</h3>
+            <p style="color:#41525c;font-size:1.02rem;margin:0 0 14px;">Speak with our team about home care or employment.</p>
+            <span style="color:#15589A;font-weight:700;display:inline-flex;align-items:center;gap:8px;">703-939-5287 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </a>
+          <a href="mailto:kirpahhc@gmail.com" style="display:block;text-decoration:none;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);" style-hover="border-color:#BBD3EC;box-shadow:0 16px 40px rgba(12,44,82,.10)">
+            <span style="width:54px;height:54px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.25rem;font-weight:700;margin:16px 0 6px;">Email us</h3>
+            <p style="color:#41525c;font-size:1.02rem;margin:0 0 14px;">Send us the details and we'll get back to you.</p>
+            <span style="color:#15589A;font-weight:700;display:inline-flex;align-items:center;gap:8px;">kirpahhc@gmail.com <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </a>
+          <a href="https://maps.google.com/?q=20130%20Lakeview%20Center%20Plaza%20Suite%20409%20Ashburn%20VA%2020147" target="_blank" rel="noopener noreferrer" style="display:block;text-decoration:none;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(12,44,82,.04),0 10px 28px rgba(12,44,82,.05);" style-hover="border-color:#BBD3EC;box-shadow:0 16px 40px rgba(12,44,82,.10)">
+            <span style="width:54px;height:54px;border-radius:14px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.25rem;font-weight:700;margin:16px 0 6px;">Visit us</h3>
+            <p style="color:#41525c;font-size:1.02rem;margin:0 0 14px;">20130 Lakeview Center Plaza, Suite 409, Ashburn, VA 20147</p>
+            <span style="color:#15589A;font-weight:700;display:inline-flex;align-items:center;gap:8px;">Get directions <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </a>
+        </div>
+
+        <!-- Form + aside -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,44px);align-items:start;">
+          <div style="flex:2;min-width:300px;">
+            <sc-if value="{{ contactSent }}">
+              <div style="background:#fff;border:1px solid #E3E9F0;border-radius:20px;box-shadow:0 10px 30px rgba(12,44,82,.07);padding:clamp(32px,5vw,52px);text-align:center;">
+                <span style="width:72px;height:72px;border-radius:50%;background:#E7F6EC;color:#1A9E4B;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <h2 style="color:#0C2C52;font-size:1.6rem;font-weight:800;margin:0 0 10px;">Thank you — your message has been sent!</h2>
+                <p style="color:#41525c;font-size:1.08rem;line-height:1.6;margin:0 auto;max-width:44ch;">A real person will get back to you soon. Need to talk right away? Call <a href="tel:+17039395287" style="color:#15589A;font-weight:700;text-decoration:none;">703-939-5287</a>.</p>
+              </div>
+            </sc-if>
+            <sc-if value="{{ notContactSent }}">
+            <form onSubmit="{{ submitContact }}" style="background:#fff;border:1px solid #E3E9F0;border-radius:20px;box-shadow:0 10px 30px rgba(12,44,82,.07);padding:clamp(24px,4vw,40px);">
+              <h2 style="color:#0C2C52;font-size:1.4rem;font-weight:800;margin:0 0 4px;">Send us a message</h2>
+              <p style="color:#5A6873;font-size:1rem;margin:0 0 22px;">We'll reply by phone or email, whichever you prefer.</p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+                <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Your name <span style="color:#DD5A2A;">*</span></span><input type="text" placeholder="First and last name" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></label>
+                <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Phone</span><input type="tel" placeholder="(703) 555-0100" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></label>
+                <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Email <span style="color:#DD5A2A;">*</span></span><input type="email" placeholder="you@example.com" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></label>
+                <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">I'm interested in</span><select style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"><option>Home care for a loved one</option><option>Careers / employment</option><option>Insurance &amp; billing</option><option>Something else</option></select></label>
+                <label style="display:flex;flex-direction:column;gap:6px;grid-column:1/-1;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Message <span style="color:#DD5A2A;">*</span></span><textarea placeholder="How can we help?" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;min-height:130px;resize:vertical;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></textarea></label>
+              </div>
+              <label style="display:flex;gap:12px;align-items:flex-start;margin-top:20px;font-size:1rem;color:#36444F;cursor:pointer;"><input type="checkbox" style="width:22px;height:22px;margin-top:2px;flex:none;accent-color:#1466B8;"><span>I agree to be contacted by Kirpa Home Health Care. <span style="color:#DD5A2A;">*</span></span></label>
+              <button type="submit" style="display:inline-flex;align-items:center;gap:10px;background:#DD5A2A;color:#fff;font-weight:700;font-size:1.08rem;padding:16px 30px;border-radius:12px;border:0;cursor:pointer;margin-top:24px;box-shadow:0 8px 20px rgba(221,90,42,.26);" style-hover="background:#C24A1E">Send Message <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            </form>
+            </sc-if>
+          </div>
+
+          <aside style="flex:1;min-width:260px;display:grid;gap:18px;align-content:start;">
+            <div style="background:#0C2C52;color:#C5D4E6;border-radius:18px;padding:28px;">
+              <h3 style="color:#fff;font-size:1.2rem;font-weight:800;margin:0 0 18px;">Get in touch</h3>
+              <ul style="list-style:none;padding:0;margin:0;display:grid;gap:16px;">
+                <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:40px;height:40px;border-radius:11px;background:rgba(127,177,222,.18);color:#7FB1DE;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><strong style="color:#fff;display:block;font-size:1.02rem;">Address</strong><span style="font-size:.96rem;">20130 Lakeview Center Plaza, Suite 409, Ashburn, VA 20147</span></span></li>
+                <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:40px;height:40px;border-radius:11px;background:rgba(127,177,222,.18);color:#7FB1DE;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span><strong style="color:#fff;display:block;font-size:1.02rem;">Phone</strong><a href="tel:+17039395287" style="color:#CDD9E6;font-size:.96rem;text-decoration:none;" style-hover="color:#fff">703-939-5287</a></span></li>
+                <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:40px;height:40px;border-radius:11px;background:rgba(127,177,222,.18);color:#7FB1DE;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><span><strong style="color:#fff;display:block;font-size:1.02rem;">Email</strong><a href="mailto:kirpahhc@gmail.com" style="color:#CDD9E6;font-size:.96rem;text-decoration:none;" style-hover="color:#fff">kirpahhc@gmail.com</a></span></li>
+                <li style="display:flex;gap:14px;align-items:flex-start;"><span style="width:40px;height:40px;border-radius:11px;background:rgba(127,177,222,.18);color:#7FB1DE;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span><strong style="color:#fff;display:block;font-size:1.02rem;">Availability</strong><span style="font-size:.96rem;">Care professionals available 24/7</span></span></li>
+              </ul>
+            </div>
+            <div style="background:#fff;border:1px solid #E3E9F0;border-radius:18px;padding:26px;text-align:center;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+              <p style="color:#5A6873;font-size:1rem;margin:0 0 12px;">Looking to join our team?</p>
+              <a onClick="{{ goCareers }}" style="cursor:pointer;display:inline-flex;width:100%;box-sizing:border-box;align-items:center;justify-content:center;gap:9px;background:#1466B8;color:#fff;font-weight:700;font-size:1.04rem;padding:13px 20px;border-radius:12px;text-decoration:none;" style-hover="background:#115394">View Careers</a>
+              <a onClick="{{ goRequest }}" style="cursor:pointer;display:inline-flex;width:100%;box-sizing:border-box;align-items:center;justify-content:center;gap:9px;background:#fff;color:#0C2C52;font-weight:700;font-size:1.04rem;padding:13px 20px;border-radius:12px;text-decoration:none;border:2px solid #D7DFE8;margin-top:10px;" style-hover="border-color:#1466B8;background:#F4F8FC">Request a Service</a>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Map -->
+        <div style="margin-top:clamp(32px,4vw,48px);border-radius:18px;overflow:hidden;border:1px solid #E3E9F0;position:relative;background:#EAF1F8;min-height:300px;display:flex;align-items:center;justify-content:center;">
+          <div style="position:absolute;inset:0;background-image:linear-gradient(#D9E5F1 1px,transparent 1px),linear-gradient(90deg,#D9E5F1 1px,transparent 1px);background-size:46px 46px;opacity:.7;"></div>
+          <div style="position:relative;text-align:center;padding:28px;">
+            <span style="width:58px;height:58px;border-radius:50%;background:#1466B8;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 8px 20px rgba(20,102,184,.3);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <strong style="display:block;color:#0C2C52;font-size:1.1rem;">Kirpa Home Health Care</strong>
+            <span style="display:block;color:#41525c;font-size:1rem;margin-top:4px;">20130 Lakeview Center Plaza, Suite 409, Ashburn, VA 20147</span>
+            <a href="https://maps.google.com/?q=20130%20Lakeview%20Center%20Plaza%20Suite%20409%20Ashburn%20VA%2020147" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:#fff;color:#15589A;font-weight:700;font-size:1rem;padding:11px 20px;border-radius:10px;text-decoration:none;border:1px solid #D7DFE8;" style-hover="border-color:#1466B8">Open in Google Maps <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  </sc-if>
+  <!-- ============================ CAREERS ============================ -->
+  <sc-if value="{{ isCareers }}">
+  <div>
+    <!-- Page hero -->
+    <section style="background:linear-gradient(180deg,#EEF4FA 0%,#F8FBFD 100%);border-bottom:1px solid #E3E9F0;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(34px,5vw,60px) 24px;">
+        <div style="font-size:.96rem;color:#5A6873;margin-bottom:14px;"><a onClick="{{ goHome }}" style="cursor:pointer;color:#1466B8;text-decoration:none;" style-hover="text-decoration:underline">Home</a> <span style="color:#9AA7B2;margin:0 4px;">/</span> Careers</div>
+        <h1 style="color:#0C2C52;font-size:clamp(2.1rem,4.4vw,3rem);line-height:1.1;font-weight:800;letter-spacing:-.022em;margin:0;max-width:20ch;">Build a fulfilling career in home care</h1>
+        <p style="color:#41525c;font-size:1.2rem;line-height:1.6;margin:18px 0 0;max-width:62ch;">Are you looking for a fulfilling career in the healthcare industry? Our growing team is searching for talented and passionate caregivers like you.</p>
+      </div>
+    </section>
+
+    <!-- Perks -->
+    <section style="background:#fff;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,80px) 24px;">
+        <div style="text-align:center;max-width:54ch;margin:0 auto;">
+          <span style="font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1466B8;">Why join Kirpa</span>
+          <h2 style="color:#0C2C52;font-size:clamp(1.8rem,3.4vw,2.4rem);line-height:1.14;font-weight:800;letter-spacing:-.02em;margin:12px 0 0;">More than just a job</h2>
+          <p style="color:#41525c;font-size:1.16rem;line-height:1.6;margin:16px auto 0;">Joining our home care team is an opportunity to grow your career while making a real difference in people's lives.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:clamp(32px,4vw,48px);">
+          <div style="text-align:center;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:30px 24px;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+            <span style="width:62px;height:62px;border-radius:16px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2 0-2.8a2 2 0 0 0-3 0z"/><path d="M12 15l-3-3a22 22 0 0 1 8-10c3 0 5 2 5 5a22 22 0 0 1-10 8z"/><circle cx="15" cy="9" r="1.5"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.16rem;font-weight:700;margin:0 0 8px;">More than just a job</h3>
+            <p style="color:#41525c;font-size:1rem;line-height:1.6;margin:0;">An opportunity to advance your career in the healthcare industry.</p>
+          </div>
+          <div style="text-align:center;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:30px 24px;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+            <span style="width:62px;height:62px;border-radius:16px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.16rem;font-weight:700;margin:0 0 8px;">Family-focused team</h3>
+            <p style="color:#41525c;font-size:1rem;line-height:1.6;margin:0;">We work closely with our clients and their families, together.</p>
+          </div>
+          <div style="text-align:center;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:30px 24px;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+            <span style="width:62px;height:62px;border-radius:16px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5 4.7 1.3 6.9L12 17.6 5.4 20.9 6.7 14 1.7 9.3l7-.8z"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.16rem;font-weight:700;margin:0 0 8px;">Excellence &amp; collaboration</h3>
+            <p style="color:#41525c;font-size:1rem;line-height:1.6;margin:0;">We value diversity and collaboration, and strive for excellence in all we do.</p>
+          </div>
+          <div style="text-align:center;background:#fff;border:1px solid #E3E9F0;border-radius:16px;padding:30px 24px;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+            <span style="width:62px;height:62px;border-radius:16px;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+            <h3 style="color:#0C2C52;font-size:1.16rem;font-weight:700;margin:0 0 8px;">Full-time &amp; part-time</h3>
+            <p style="color:#41525c;font-size:1rem;line-height:1.6;margin:0;">Whether you're seeking full-time or part-time work, we have opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Application -->
+    <section style="background:#F4F8FC;border-top:1px solid #E3E9F0;">
+      <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,80px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,44px);align-items:start;">
+        <div style="flex:2;min-width:300px;">
+          <sc-if value="{{ careerSent }}">
+            <div style="background:#fff;border:1px solid #E3E9F0;border-radius:20px;box-shadow:0 10px 30px rgba(12,44,82,.07);padding:clamp(32px,5vw,52px);text-align:center;">
+              <span style="width:72px;height:72px;border-radius:50%;background:#E7F6EC;color:#1A9E4B;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <h2 style="color:#0C2C52;font-size:1.6rem;font-weight:800;margin:0 0 10px;">Thank you for applying!</h2>
+              <p style="color:#41525c;font-size:1.08rem;line-height:1.6;margin:0 auto;max-width:44ch;">We've received your application and our team will be in touch. Questions? Call <a href="tel:+17039395287" style="color:#15589A;font-weight:700;text-decoration:none;">703-939-5287</a>.</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ notCareerSent }}">
+          <form onSubmit="{{ submitCareer }}" style="background:#fff;border:1px solid #E3E9F0;border-radius:20px;box-shadow:0 10px 30px rgba(12,44,82,.07);padding:clamp(24px,4vw,40px);">
+            <h2 style="color:#0C2C52;font-size:1.4rem;font-weight:800;margin:0 0 4px;">Apply to join our team</h2>
+            <p style="color:#5A6873;font-size:1rem;margin:0 0 22px;">Tell us a little about yourself — it only takes a few minutes.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+              <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Full name <span style="color:#DD5A2A;">*</span></span><input type="text" placeholder="First and last name" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Phone <span style="color:#DD5A2A;">*</span></span><input type="tel" placeholder="(703) 555-0100" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Email <span style="color:#DD5A2A;">*</span></span><input type="email" placeholder="you@example.com" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Availability</span><select style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"><option>Full-time</option><option>Part-time</option><option>Either</option></select></label>
+              <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Position of interest</span><select style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"><option>Caregiver</option><option>Certified Nursing Assistant (CNA)</option><option>Companion</option><option>Homemaker</option><option>Other</option></select></label>
+              <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Years of experience</span><select style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"><option>Less than 1 year</option><option>1–3 years</option><option>3–5 years</option><option>5+ years</option></select></label>
+              <label style="display:flex;flex-direction:column;gap:6px;grid-column:1/-1;"><span style="font-weight:700;color:#0C2C52;font-size:1rem;">Tell us about yourself</span><textarea placeholder="Your experience, certifications, and why you'd like to join Kirpa…" style="font-family:inherit;font-size:1.05rem;color:#0C2C52;background:#fff;border:1.5px solid #D7DFE8;border-radius:11px;padding:13px 14px;width:100%;min-height:120px;resize:vertical;" style-focus="border-color:#1466B8;outline:none;box-shadow:0 0 0 3px rgba(20,102,184,.15)"></textarea></label>
+            </div>
+            <div style="grid-column:1/-1;margin-top:16px;border:1.5px dashed #B7D0E8;background:#EFF5FB;border-radius:12px;padding:22px;text-align:center;cursor:pointer;" style-hover="background:#E4EFF8;border-color:#1466B8">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1466B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin:0 auto 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5M12 3v12"/></svg>
+              <div style="color:#0C2C52;font-size:1.02rem;"><strong style="color:#15589A;">Upload your resume</strong> or drag &amp; drop</div>
+              <div style="color:#5A6873;font-size:.9rem;margin-top:4px;">PDF or Word, up to 10MB</div>
+            </div>
+            <label style="display:flex;gap:12px;align-items:flex-start;margin-top:20px;font-size:1rem;color:#36444F;cursor:pointer;"><input type="checkbox" style="width:22px;height:22px;margin-top:2px;flex:none;accent-color:#1466B8;"><span>I agree to be contacted by Kirpa Home Health Care about my application. <span style="color:#DD5A2A;">*</span></span></label>
+            <button type="submit" style="display:inline-flex;align-items:center;gap:10px;background:#DD5A2A;color:#fff;font-weight:700;font-size:1.08rem;padding:16px 30px;border-radius:12px;border:0;cursor:pointer;margin-top:24px;box-shadow:0 8px 20px rgba(221,90,42,.26);" style-hover="background:#C24A1E">Submit Application <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+          </form>
+          </sc-if>
+        </div>
+
+        <aside style="flex:1;min-width:260px;display:grid;gap:18px;align-content:start;">
+          <div style="background:#0C2C52;color:#C5D4E6;border-radius:18px;padding:28px;">
+            <h3 style="color:#fff;font-size:1.2rem;font-weight:800;margin:0 0 16px;">What we look for</h3>
+            <ul style="list-style:none;padding:0;margin:0;display:grid;gap:14px;">
+              <li style="display:flex;gap:12px;align-items:flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7FB1DE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg><span style="font-size:1rem;">A caring, dependable, and patient nature</span></li>
+              <li style="display:flex;gap:12px;align-items:flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7FB1DE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg><span style="font-size:1rem;">A genuine passion for helping others</span></li>
+              <li style="display:flex;gap:12px;align-items:flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7FB1DE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg><span style="font-size:1rem;">Reliability and good communication</span></li>
+            </ul>
+          </div>
+          <div style="background:#fff;border:1px solid #E3E9F0;border-radius:18px;padding:26px;text-align:center;box-shadow:0 1px 2px rgba(12,44,82,.04);">
+            <p style="color:#5A6873;font-size:1rem;margin:0;">Questions about working with us?</p>
+            <a href="tel:+17039395287" style="display:block;font-size:1.5rem;font-weight:800;color:#15589A;text-decoration:none;margin:6px 0 0;">703-939-5287</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer style="background:#0C2C52;color:#9FB2C8;">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,72px) 24px 32px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:36px;">
+        <div style="max-width:34ch;">
+          <div style="display:inline-flex;align-items:center;gap:12px;">
+            <span style="width:44px;height:44px;border-radius:12px;background:#fff;color:#0C2C52;font-weight:800;font-size:1.4rem;display:flex;align-items:center;justify-content:center;flex:none;">K</span>
+            <span style="line-height:1.05;"><span style="display:block;font-size:1.25rem;font-weight:800;color:#fff;">Kirpa</span><span style="display:block;font-size:.64rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7FB1DE;">Home Health Care</span></span>
+          </div>
+          <p style="margin:18px 0 0;font-size:1rem;line-height:1.6;color:#9FB2C8;">Dedicated to providing exceptional care and support to individuals and families in the comfort of their own homes.</p>
+        </div>
+        <div>
+          <h4 style="color:#fff;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 16px;">Care</h4>
+          <ul style="list-style:none;padding:0;margin:0;display:grid;gap:11px;">
+            <li><a onClick="{{ goServices }}" style="cursor:pointer;color:#B9C8DA;font-size:1rem;text-decoration:none;" style-hover="color:#fff">Services</a></li>
+            <li><a onClick="{{ goRequest }}" style="cursor:pointer;color:#B9C8DA;font-size:1rem;text-decoration:none;" style-hover="color:#fff">Request a Service</a></li>
+            <li><a onClick="{{ goAbout }}" style="cursor:pointer;color:#B9C8DA;font-size:1rem;text-decoration:none;" style-hover="color:#fff">About Us</a></li>
+            <li><a onClick="{{ goContact }}" style="cursor:pointer;color:#B9C8DA;font-size:1rem;text-decoration:none;" style-hover="color:#fff">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color:#fff;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 16px;">Work With Us</h4>
+          <ul style="list-style:none;padding:0;margin:0;display:grid;gap:11px;">
+            <li><a onClick="{{ goCareers }}" style="cursor:pointer;color:#B9C8DA;font-size:1rem;text-decoration:none;" style-hover="color:#fff">Careers</a></li>
+            <li><a onClick="{{ goCareers }}" style="cursor:pointer;color:#B9C8DA;font-size:1rem;text-decoration:none;" style-hover="color:#fff">Apply Now</a></li>
+            <li><a onClick="{{ goRequest }}" style="cursor:pointer;color:#B9C8DA;font-size:1rem;text-decoration:none;" style-hover="color:#fff">Get Started</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color:#fff;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 16px;">Get in Touch</h4>
+          <ul style="list-style:none;padding:0;margin:0;display:grid;gap:13px;">
+            <li style="display:flex;gap:11px;align-items:flex-start;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7FB1DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+17039395287" style="color:#CDD9E6;font-size:1rem;text-decoration:none;" style-hover="color:#fff">703-939-5287</a></li>
+            <li style="display:flex;gap:11px;align-items:flex-start;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7FB1DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><a href="mailto:kirpahhc@gmail.com" style="color:#CDD9E6;font-size:1rem;text-decoration:none;" style-hover="color:#fff">kirpahhc@gmail.com</a></li>
+            <li style="display:flex;gap:11px;align-items:flex-start;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7FB1DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span style="color:#CDD9E6;font-size:1rem;">20130 Lakeview Center Plaza, Suite 409, Ashburn, VA 20147</span></li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.12);margin-top:36px;padding-top:24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.9rem;color:#8499AF;">
+        <span>© {{ year }} Kirpa Home Health Care. All rights reserved.</span>
+        <span>Non-medical home care · Ashburn, VA</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { page: 'home', care: '', sent: false, contactSent: false, careerSent: false };
+
+  go = (page) => {
+    this.setState({ page, sent: false, contactSent: false, careerSent: false });
+    if (typeof window !== 'undefined' && window.scrollTo) window.scrollTo({ top: 0, left: 0 });
+  };
+  selectCare = (v) => this.setState({ care: v });
+  submitRequest = (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ sent: true }); if (typeof window !== 'undefined' && window.scrollTo) window.scrollTo({ top: 0, left: 0 }); };
+  submitContact = (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ contactSent: true }); };
+  submitCareer = (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ careerSent: true }); };
+
+  renderVals() {
+    const p = this.state.page;
+    const ul = (a) => ({ display: 'block', height: '3px', borderRadius: '3px', marginTop: '7px', background: a ? '#DD5A2A' : 'transparent' });
+    const care = this.state.care;
+    const chip = (v) => {
+      const on = care === v;
+      return { display: 'flex', gap: '13px', alignItems: 'center', padding: '16px 18px', border: '2px solid ' + (on ? '#1466B8' : '#E3E9F0'), background: on ? '#EAF2FB' : '#fff', borderRadius: '13px', cursor: 'pointer', boxShadow: on ? 'inset 0 0 0 1px #1466B8' : 'none' };
+    };
+    return {
+      isHome: p === 'home', isServices: p === 'services', isRequest: p === 'request', isAbout: p === 'about', isContact: p === 'contact', isCareers: p === 'careers',
+      goHome: () => this.go('home'), goServices: () => this.go('services'), goRequest: () => this.go('request'), goAbout: () => this.go('about'), goContact: () => this.go('contact'), goCareers: () => this.go('careers'),
+      svcUL: ul(p === 'services'), reqUL: ul(p === 'request'), aboutUL: ul(p === 'about'), contactUL: ul(p === 'contact'), careersUL: ul(p === 'careers'),
+      selectCare: this.selectCare,
+      selPersonal: () => this.selectCare('Personal Care'), selCompanion: () => this.selectCare('Companionship'), selHome: () => this.selectCare('Homemaking'), selErrands: () => this.selectCare('Errands & Transportation'), selMeds: () => this.selectCare('Medication Reminders'), selRespite: () => this.selectCare('Respite & Family Relief'), selUnsure: () => this.selectCare('Not sure yet'),
+      cPersonal: chip('Personal Care'), cCompanion: chip('Companionship'), cHome: chip('Homemaking'), cErrands: chip('Errands & Transportation'), cMeds: chip('Medication Reminders'), cRespite: chip('Respite & Family Relief'), cUnsure: chip('Not sure yet'),
+      submitRequest: this.submitRequest, sent: this.state.sent, notSent: !this.state.sent,
+      submitContact: this.submitContact, contactSent: this.state.contactSent, notContactSent: !this.state.contactSent,
+      submitCareer: this.submitCareer, careerSent: this.state.careerSent, notCareerSent: !this.state.careerSent,
+      year: (new Date()).getFullYear(),
+    };
+  }
+}
+</script>
+</body>
+</html>

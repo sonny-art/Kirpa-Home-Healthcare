@@ -1,0 +1,174 @@
+/* ==========================================================================
+   Kirpa Home Health Care — base styles from the Claude Design prototype.
+   Figtree, light theme, navy/blue/orange palette.
+   ========================================================================== */
+
+* { box-sizing: border-box; }
+/* Root size drives all rem-based type — bumping it scales the whole site up. */
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; font-size: 18.5px; }
+body {
+  margin: 0;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.12rem;
+  line-height: 1.62;
+  font-weight: 420;
+  color: #0b1016; /* near-black: reads black, not grey */
+  background: #fff;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip; /* prevents horizontal scroll without breaking position:sticky */
+}
+
+/* Headings use an elegant editorial serif (Inova-inspired). A lighter weight
+   reads cleaner than the prototype's heavy sans; sizes stay confident & large.
+   (h4 is excluded — it's used for small uppercase footer labels that stay sans.) */
+h1, h2, h3 {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-weight: 600 !important;
+  letter-spacing: -0.012em !important;
+  line-height: 1.12;
+}
+h1 { line-height: 1.06; }
+/* Hero copy is a size container so the headline scales with its OWN column
+   width (cqi), never breaking a word — consistent ratios at every screen size. */
+.hero-copy { container-type: inline-size; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+a { color: inherit; }
+::selection { background: #cfe2f5; }
+
+/* Accessible focus ring for keyboard users (kept subtle, on-brand) */
+:focus-visible { outline: 3px solid rgba(20,102,184,.45); outline-offset: 2px; }
+
+/* Skip link */
+.skip-link { position: absolute; left: -9999px; top: 0; z-index: 100; background: #fff; color: #1466B8; padding: 12px 18px; border-radius: 0 0 10px 0; font-weight: 700; }
+.skip-link:focus { left: 0; }
+
+/* --------------------------------------------------------------------------
+   Interaction utilities — the design's style-hover / style-focus.
+   !important so they win over the element's inline base styles on hover/focus.
+   -------------------------------------------------------------------------- */
+.hv-cta, .hv-outline, .hv-outline-plain, .hv-soft, .hv-white, .hv-blue, .hv-bordonly, .hv-card, .navlink {
+  transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .2s ease, transform .16s ease;
+}
+.hv-cta:hover { background: #C24A1E !important; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(221,90,42,.38) !important; }
+.hv-cta:active { transform: translateY(0); }
+.hv-outline:hover { border-color: #1466B8 !important; background: #F4F8FC !important; transform: translateY(-2px); }
+.hv-outline-plain:hover { border-color: #1466B8 !important; background: #fff !important; transform: translateY(-2px); }
+.hv-soft:hover { background: #EAF2FB !important; transform: translateY(-2px); }
+.hv-card:hover { border-color: #BBD3EC !important; box-shadow: 0 20px 46px rgba(12,44,82,.13) !important; transform: translateY(-5px); }
+.hv-white:hover { color: #fff !important; }
+.hv-underline:hover { text-decoration: underline !important; }
+.hv-drop:hover { background: #E4EFF8 !important; border-color: #1466B8 !important; }
+.hv-blue:hover { background: #115394 !important; transform: translateY(-2px); }
+.hv-bordonly:hover { border-color: #1466B8 !important; }
+
+.fld:focus { border-color: #1466B8 !important; outline: none !important; box-shadow: 0 0 0 3px rgba(20,102,184,.15) !important; }
+
+/* --------------------------------------------------------------------------
+   Buttons — rectangular & flat (Inova / MyChart style), not rounded pills.
+   Existing inline-styled buttons are flattened here; primary CTAs use the
+   <Btn> component below for the split two-tone arrow.
+   -------------------------------------------------------------------------- */
+.hv-cta, .hv-outline, .hv-outline-plain, .hv-soft, .hv-blue {
+  border-radius: 3px !important; box-shadow: none !important;
+}
+.hv-cta:hover, .hv-outline:hover, .hv-outline-plain:hover, .hv-soft:hover, .hv-blue:hover {
+  transform: none !important; box-shadow: none !important;
+}
+
+.btn {
+  display: inline-flex; align-items: stretch; border-radius: 3px; font-weight: 700;
+  text-decoration: none; cursor: pointer; overflow: hidden; line-height: 1;
+  font-family: inherit; transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+.btn__label { display: flex; align-items: center; gap: 9px; padding: 17px 26px; font-size: 1.08rem; white-space: nowrap; }
+.btn__arrow { display: flex; align-items: center; padding: 0 18px; }
+.btn--primary { background: #DD5A2A; color: #fff; border: 0; }
+.btn--primary .btn__arrow { background: #C24A1E; }
+.btn--primary:hover { background: #CC4E21; }
+.btn--primary:hover .btn__arrow { background: #A53D18; }
+.btn--secondary { background: #fff; color: #0C2C52; border: 2px solid #CBD6E2; }
+.btn--secondary .btn__arrow { border-left: 2px solid #CBD6E2; }
+.btn--secondary:hover { border-color: #1466B8; color: #1466B8; }
+.btn--secondary:hover .btn__arrow { border-color: #1466B8; }
+.btn--white { background: #fff; color: #0C2C52; border: 0; }
+.btn--white .btn__arrow { background: #EAF2FB; color: #1466B8; }
+.btn--white:hover { background: #F4F8FC; }
+
+/* Nav links: animated underline that grows on hover and stays for the active page. */
+.navlink { position: relative; color: #0C2C52; }
+.navlink::after {
+  content: ""; position: absolute; left: 11px; right: 11px; bottom: 2px; height: 3px; border-radius: 3px;
+  background: #DD5A2A; transform: scaleX(0); transform-origin: center;
+  transition: transform .24s cubic-bezier(.4,0,.2,1);
+}
+.navlink:hover { color: #1466B8; }
+.navlink:hover::after,
+.navlink[aria-current="page"]::after { transform: scaleX(1); }
+.navlink:active { transform: translateY(1px); }
+
+/* Scroll-reveal: subtle entrance animation. Content is always in the HTML; a
+   <noscript> override keeps it visible when JS is off. */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .65s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none; } }
+
+/* Mobile action bar: a fixed CTA that slides up once the hero buttons scroll
+   away (toggled by the .is-visible class from the MobileCta client component).
+   Uses the same <Btn> design system as the rest of the site for consistency. */
+.mobile-cta { display: none; }
+@media (max-width: 720px) {
+  .mobile-cta {
+    display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,.97); backdrop-filter: blur(10px);
+    border-top: 1px solid #E3E9F0; box-shadow: 0 -6px 22px rgba(12,44,82,.10);
+    transform: translateY(115%); opacity: 0; pointer-events: none;
+    transition: transform .26s cubic-bezier(.4,0,.2,1), opacity .26s ease;
+  }
+  .mobile-cta.is-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .mobile-cta .btn { flex: 1; font-size: 1.04rem; }
+  .mobile-cta .btn__label { flex: 1; justify-content: center; padding: 14px 10px; }
+  .mobile-cta .btn__arrow { padding: 0 14px; }
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+}
+
+/* Hero CTAs: stack to equal full width on phones so the two buttons match. */
+@media (max-width: 560px) {
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .hero-cta > .btn { width: 100%; }
+  .hero-cta > .btn .btn__label { flex: 1; }
+  .hero-cta > .btn.btn--noarrow .btn__label { justify-content: center; }
+}
+
+/* Utility bar: on phones it would collapse to just the phone number, which is
+   redundant with the in-page Call buttons, so hide the whole strip there. */
+@media (max-width: 600px) {
+  .utilbar { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Header — desktop matches the design exactly; below 880px the inline nav
+   collapses into a clean on-brand dropdown menu (the design is desktop-first
+   and its nav has no mobile treatment).
+   -------------------------------------------------------------------------- */
+/* Form-page sidebar: sticks alongside the long form on desktop so the right
+   column never goes blank as you scroll. Disabled when the layout stacks. */
+@media (min-width: 768px) {
+  .form-aside { position: sticky; top: 96px; }
+}
+
+
+.mast-toggle { display: none; }
+.mast-mobile { display: none; }
+@media (max-width: 980px) {
+  .mast-actions { display: none !important; }
+  .mast-toggle { display: inline-flex !important; }
+  .mast-mobile.is-open { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .mobile-cta { transition: opacity .2s ease; } /* fade only, no slide */
+}
