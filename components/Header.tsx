@@ -70,7 +70,7 @@ export function Header() {
                 );
               })}
             </nav>
-            <Btn href="/request-service">Request care</Btn>
+            <Btn href="/request-service">Request Care</Btn>
           </div>
 
           {/* Mobile toggle */}
@@ -91,7 +91,7 @@ export function Header() {
               );
             })}
           </nav>
-          <Btn href="/request-service" onClick={() => setOpen(false)}>Request care</Btn>
+          <Btn href="/request-service" onClick={() => setOpen(false)}>Request Care</Btn>
         </div>
       </header>
     </>

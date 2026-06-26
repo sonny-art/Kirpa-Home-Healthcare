@@ -83,7 +83,7 @@ export default function ServicesPage() {
                 </li>
               ))}
             </ul>
-            <div style={s("margin-top:28px")}><Btn href="/request-service">Request a Service</Btn></div>
+            <div style={s("margin-top:28px")}><Btn href="/request-service">Request Care</Btn></div>
           </div>
           <div style={s("position:relative;border-radius:22px;overflow:hidden;box-shadow:0 18px 44px rgba(12,44,82,.14);aspect-ratio:5/4;background:#dce7f2")}>
             <CoverPhoto src="/images/consulting.jpg" alt="A Kirpa caregiver supporting a senior client outdoors" />
@@ -98,7 +98,7 @@ export default function ServicesPage() {
             <h2 style={s("color:#fff;font-size:clamp(2.25rem,4.4vw,3.1rem);line-height:1.14;font-weight:800;letter-spacing:-.02em;margin:0")}>Not sure which service fits?</h2>
             <p style={s("color:#C5D4E6;font-size:1.14rem;line-height:1.6;margin:14px auto 0;max-width:52ch")}>Tell us about your situation and we&apos;ll help you find the right care.</p>
             <div style={s("display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:28px")}>
-              <Btn href="/request-service">Request a Service</Btn>
+              <Btn href="/request-service">Request Care</Btn>
               <Btn href="tel:+17039395287" variant="white" arrow={false}>Call 703-939-5287</Btn>
             </div>
           </div>
