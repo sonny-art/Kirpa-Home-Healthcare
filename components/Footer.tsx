@@ -26,7 +26,7 @@ export function Footer() {
             <h4 style={s("color:#fff;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 16px")}>Care</h4>
             <ul style={s("list-style:none;padding:0;margin:0;display:grid;gap:11px")}>
               <li><Link href="/services" className="hv-white" style={linkS}>Services</Link></li>
-              <li><Link href="/request-service" className="hv-white" style={linkS}>Request a Service</Link></li>
+              <li><Link href="/request-service" className="hv-white" style={linkS}>Request Care</Link></li>
               <li><Link href="/about" className="hv-white" style={linkS}>About Us</Link></li>
               <li><Link href="/contact" className="hv-white" style={linkS}>Contact</Link></li>
             </ul>

@@ -50,7 +50,7 @@ export default function AboutPage() {
             <h2 style={s("color:#0C2C52;font-size:clamp(2.25rem,4.4vw,3.1rem);line-height:1.14;font-weight:800;letter-spacing:-.02em;margin:12px 0 0")}>Care that feels like family</h2>
             <p style={s("color:#0b1016;font-size:1.28rem;line-height:1.6;margin:16px 0 0")}>At Kirpa Home Health Care, we are dedicated to providing exceptional care and support to individuals and families in the comfort of their own homes. We believe everyone deserves to be treated with compassion and respect.</p>
             <p style={s("color:#0b1016;font-size:1.28rem;line-height:1.6;margin:16px 0 0")}>Our goal is to enhance the lives of our patients and their families by providing comfort, support, and dignity. Our team includes registered nurses, social workers, and certified nursing assistants, and our care professionals are available 24/7. We take time to understand each person&apos;s physical, emotional, and spiritual needs, and we work with a variety of insurance providers, including Medicare and Medicaid, to help make our services accessible.</p>
-            <div style={s("margin-top:26px")}><Btn href="/request-service">Request a Service</Btn></div>
+            <div style={s("margin-top:26px")}><Btn href="/request-service">Request Care</Btn></div>
           </div>
           <div style={s("position:relative;border-radius:22px;overflow:hidden;box-shadow:0 18px 44px rgba(12,44,82,.14);aspect-ratio:5/4;background:#dce7f2")}>
             <CoverPhoto src="/images/care-2.jpg" alt="An adult daughter spending time with her elderly mother at home" />
@@ -96,7 +96,7 @@ export default function AboutPage() {
             <h2 style={s("color:#0C2C52;font-size:clamp(2.25rem,4.4vw,3.1rem);line-height:1.14;font-weight:800;letter-spacing:-.02em;margin:0")}>We&apos;d be honored to care for your family</h2>
             <p style={s("color:#0b1016;font-size:1.14rem;line-height:1.6;margin:14px auto 0;max-width:48ch")}>Let&apos;s talk about what your loved one needs.</p>
             <div style={s("display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:28px")}>
-              <Btn href="/request-service">Request a Service</Btn>
+              <Btn href="/request-service">Request Care</Btn>
               <Btn href="/contact" variant="secondary">Contact Us</Btn>
             </div>
           </div>

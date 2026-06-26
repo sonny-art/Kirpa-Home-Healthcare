@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { s } from "@/lib/style";
 import { Btn } from "@/components/Btn";
-import { Phone, Clock, Pin, Arrow, Menu, Close } from "@/components/DCIcon";
+import { Pin, Menu, Close, Sun, Moon } from "@/components/DCIcon";
 
 const NAV = [
   { label: "Services", href: "/services" },
@@ -20,10 +20,17 @@ const MAPS =
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  // Day vs night by the visitor's local time: sun in the day, moon at night.
+  const [isNight, setIsNight] = useState(false);
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const h = new Date().getHours();
+    setIsNight(h < 6 || h >= 19);
+  }, []);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
@@ -31,13 +38,10 @@ export function Header() {
     <>
       {/* Utility bar */}
       <div className="utilbar" style={s("background:#0C2C52;color:#C5D4E6")}>
-        <div className="utilbar-inner" style={s("max-width:1200px;margin:0 auto;padding:0 24px;min-height:46px;display:flex;align-items:center;justify-content:space-between;gap:16px")}>
-          <a href="tel:+17039395287" className="util-phone hv-white" style={s("color:#fff;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:9px;font-size:1rem;letter-spacing:.01em")}>
-            <Phone size={17} /> 703-939-5287
-          </a>
+        <div className="utilbar-inner" style={s("max-width:1200px;margin:0 auto;padding:0 24px;min-height:44px;display:flex;align-items:center;justify-content:center;gap:16px")}>
           <div className="util-secondary" style={s("display:inline-flex;align-items:center;gap:22px;font-size:.95rem")}>
             <span style={s("display:inline-flex;align-items:center;gap:8px")}>
-              <Clock size={16} /> Care available 24/7
+              {isNight ? <Moon size={16} /> : <Sun size={16} />} Care available 24/7
             </span>
             <a href={MAPS} target="_blank" rel="noopener noreferrer" className="hv-white" style={s("color:#C5D4E6;text-decoration:none;display:inline-flex;align-items:center;gap:8px")}>
               <Pin size={16} /> Ashburn, VA
@@ -66,7 +70,7 @@ export function Header() {
                 );
               })}
             </nav>
-            <Btn href="/request-service">Request care</Btn>
+            <Btn href="/request-service">Request Care</Btn>
           </div>
 
           {/* Mobile toggle */}
@@ -87,9 +91,7 @@ export function Header() {
               );
             })}
           </nav>
-          <Link href="/request-service" onClick={() => setOpen(false)} className="hv-cta" style={s("display:flex;align-items:center;justify-content:center;gap:8px;background:#DD5A2A;color:#fff;font-weight:700;font-size:1.02rem;padding:14px 18px;border-radius:12px;text-decoration:none;box-shadow:0 6px 16px rgba(221,90,42,.24);margin-top:14px")}>
-            Request care <Arrow size={18} />
-          </Link>
+          <Btn href="/request-service" onClick={() => setOpen(false)}>Request Care</Btn>
         </div>
       </header>
     </>

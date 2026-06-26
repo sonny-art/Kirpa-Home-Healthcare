@@ -42,7 +42,7 @@ export function MobileCta() {
         <Phone size={18} /> Call
       </Btn>
       <Btn href="/request-service" variant="primary" arrow={false}>
-        Request care
+        Request Care
       </Btn>
     </div>
   );

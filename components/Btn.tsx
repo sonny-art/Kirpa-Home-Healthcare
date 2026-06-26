@@ -47,6 +47,7 @@ export function Btn({
         <a
           href={href}
           className={cls}
+          onClick={onClick}
           {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         >
           {inner}
@@ -54,7 +55,7 @@ export function Btn({
       );
     }
     return (
-      <Link href={href} className={cls}>
+      <Link href={href} className={cls} onClick={onClick}>
         {inner}
       </Link>
     );

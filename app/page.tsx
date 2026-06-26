@@ -48,10 +48,10 @@ export default function HomePage() {
             <span style={s("display:inline-flex;align-items:center;gap:9px;background:#EAF2FB;color:#15589A;font-size:.92rem;font-weight:700;padding:9px 16px;border-radius:999px")}>
               <Check size={16} sw={2.4} /> Care supervised by nurses
             </span>
-            <h1 style={s("color:#0C2C52;font-size:clamp(2rem,13cqi,4.4rem);line-height:1.08;font-weight:800;letter-spacing:-.025em;margin:20px 0 0;max-width:15ch")}>Compassionate care, right at home.</h1>
+            <h1 style={s("color:#0C2C52;font-size:clamp(1.9rem,12cqi,4.4rem);line-height:1.08;font-weight:800;letter-spacing:-.025em;margin:20px 0 0;max-width:15ch")}>Compassionate care, right at home.</h1>
             <p style={s("color:#0b1016;font-size:clamp(1.22rem,1.8vw,1.42rem);line-height:1.6;margin:20px 0 0;max-width:50ch")}>Helping your loved one live safely and comfortably at home, with kind caregivers and nurse-supervised care.</p>
-            <div className="hero-cta" data-primary-cta style={s("display:flex;flex-wrap:wrap;gap:14px;margin-top:30px")}>
-              <Btn href="/request-service">Request a Service</Btn>
+            <div className="hero-cta" data-primary-cta style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;margin-top:30px")}>
+              <Btn href="/request-service">Request Care</Btn>
               <Btn href="tel:+17039395287" variant="secondary" arrow={false}><Phone size={20} /> Call 703-939-5287</Btn>
             </div>
             <p style={s("display:inline-flex;align-items:center;gap:9px;color:#283341;font-size:1rem;margin:22px 0 0")}>
@@ -75,7 +75,7 @@ export default function HomePage() {
       <section style={s("background:#F4F8FC;border-top:1px solid #E3E9F0;border-bottom:1px solid #E3E9F0")}>
         <div style={s("max-width:1200px;margin:0 auto;padding:28px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px")}>
           {TRUST.map((t) => (
-            <div key={t.title} style={s("display:flex;align-items:center;gap:14px")}>
+            <div key={t.title} style={s("display:flex;align-items:flex-start;gap:14px")}>
               <span style={s("width:48px;height:48px;border-radius:50%;background:#EAF2FB;color:#1466B8;display:flex;align-items:center;justify-content:center;flex:none")}>
                 <svg width={23} height={23} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{t.icon}</svg>
               </span>
@@ -135,7 +135,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            <div style={s("margin-top:30px")}><Btn href="/request-service">Request a Service</Btn></div>
+            <div style={s("margin-top:30px")}><Btn href="/request-service">Request Care</Btn></div>
           </div>
         </div>
       </section>
@@ -175,7 +175,7 @@ export default function HomePage() {
             <h2 style={s("color:#fff;font-size:clamp(2.25rem,4.4vw,3.1rem);line-height:1.14;font-weight:800;letter-spacing:-.02em;margin:12px 0 0")}>Let&apos;s find the right care together</h2>
             <p style={s("color:#C5D4E6;font-size:1.15rem;line-height:1.6;margin:14px auto 0;max-width:54ch")}>Request a consultation and we&apos;ll talk through your needs and the care that fits your family.</p>
             <div style={s("display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px")}>
-              <Btn href="/request-service">Request a Service</Btn>
+              <Btn href="/request-service">Request Care</Btn>
               <Btn href="tel:+17039395287" variant="white" arrow={false}>Call 703-939-5287</Btn>
             </div>
           </div>

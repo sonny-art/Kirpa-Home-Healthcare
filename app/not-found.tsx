@@ -13,7 +13,7 @@ export default function NotFound() {
         <p style={s("color:#0b1016;font-size:1.18rem;line-height:1.6;margin:16px auto 0;max-width:48ch")}>The page you&apos;re looking for may have moved. Let&apos;s get you back on track.</p>
         <div style={s("display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px")}>
           <Btn href="/">Back to Home</Btn>
-          <Btn href="/request-service" variant="secondary">Request a Service</Btn>
+          <Btn href="/request-service" variant="secondary">Request Care</Btn>
         </div>
       </div>
     </section>
