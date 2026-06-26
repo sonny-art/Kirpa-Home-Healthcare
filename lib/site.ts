@@ -45,7 +45,7 @@ export const SOCIAL = {
 export const NAV = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Request a Service", href: "/request-service" },
+  { label: "Request Care", href: "/request-service" },
   { label: "Careers", href: "/careers" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

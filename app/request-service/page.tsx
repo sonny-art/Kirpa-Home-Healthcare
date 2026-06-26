@@ -6,7 +6,7 @@ import { Btn } from "@/components/Btn";
 import { Phone } from "@/components/DCIcon";
 
 export const metadata: Metadata = {
-  title: "Request a Service",
+  title: "Request Care",
   description:
     "Request in-home care from Kirpa Home Health Care in Ashburn, VA. Tell us what your loved one needs and our team will reach out to arrange care.",
   alternates: { canonical: "/request-service" },
@@ -25,8 +25,8 @@ export default function RequestServicePage() {
     <div>
       <section style={s("background:linear-gradient(180deg,#EEF4FA 0%,#F8FBFD 100%);border-bottom:1px solid #E3E9F0")}>
         <div style={s("max-width:1200px;margin:0 auto;padding:clamp(34px,5vw,60px) 24px")}>
-          <div style={s("font-size:.96rem;color:#283341;margin-bottom:14px")}><Link href="/" className="hv-underline" style={s("cursor:pointer;color:#1466B8;text-decoration:none")}>Home</Link> <span style={s("color:#9AA7B2;margin:0 4px")}>/</span> Request a Service</div>
-          <h1 style={s("color:#0C2C52;font-size:clamp(2.4rem,6.6vw,4.4rem);line-height:1.1;font-weight:800;letter-spacing:-.022em;margin:0;max-width:20ch")}>Request care in just a few minutes</h1>
+          <div style={s("font-size:.96rem;color:#283341;margin-bottom:14px")}><Link href="/" className="hv-underline" style={s("cursor:pointer;color:#1466B8;text-decoration:none")}>Home</Link> <span style={s("color:#9AA7B2;margin:0 4px")}>/</span> Request Care</div>
+          <h1 style={s("color:#0C2C52;font-size:clamp(2.4rem,6.6vw,4.4rem);line-height:1.1;font-weight:800;letter-spacing:-.022em;margin:0;max-width:20ch")}>Request Care in just a few minutes</h1>
           <p style={s("color:#0b1016;font-size:1.32rem;line-height:1.6;margin:18px 0 0;max-width:62ch")}>Tell us a little about your loved one&apos;s needs and our team will reach out to talk through the right care plan. Prefer to talk now?</p>
           <div style={s("margin-top:20px")}><Btn href="tel:+17039395287" variant="secondary" arrow={false}><Phone size={19} /> Call Now</Btn></div>
         </div>
