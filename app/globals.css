@@ -80,7 +80,8 @@ a { color: inherit; }
 .btn {
   display: inline-flex; align-items: stretch; border-radius: 3px; font-weight: 700;
   text-decoration: none; cursor: pointer; overflow: hidden; line-height: 1;
-  font-family: inherit; transition: background .15s ease, border-color .15s ease, color .15s ease;
+  font-family: inherit; padding: 0; margin: 0; border: 0; -webkit-appearance: none; appearance: none;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
 }
 .btn__label { display: flex; align-items: center; gap: 9px; padding: 17px 26px; font-size: 1.08rem; white-space: nowrap; }
 .btn__arrow { display: flex; align-items: center; padding: 0 18px; }
@@ -134,13 +135,15 @@ a { color: inherit; }
   body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
 }
 
-/* Hero CTAs: stack to equal full width on phones so the two buttons match. */
-@media (max-width: 560px) {
-  .hero-cta { flex-direction: column; align-items: stretch; }
-  .hero-cta > .btn { width: 100%; }
-  .hero-cta > .btn .btn__label { flex: 1; }
-  .hero-cta > .btn.btn--noarrow .btn__label { justify-content: center; }
-}
+/* Hero CTAs: a 2-up grid that collapses to 1 column (see the inline grid on the
+   .hero-cta div). Grid 1fr columns make both buttons EXACTLY equal width,
+   whether they sit side by side or stack. */
+.hero-cta > .btn { width: 100%; }
+.hero-cta > .btn .btn__label { flex: 1; justify-content: center; }
+
+/* Mobile-menu CTA follows the same split-arrow design as every other primary. */
+.mast-mobile .btn { width: 100%; margin-top: 14px; }
+.mast-mobile .btn .btn__label { flex: 1; justify-content: center; }
 
 /* Utility bar: on phones it would collapse to just the phone number, which is
    redundant with the in-page Call buttons, so hide the whole strip there. */
@@ -156,7 +159,16 @@ a { color: inherit; }
 /* Form-page sidebar: sticks alongside the long form on desktop so the right
    column never goes blank as you scroll. Disabled when the layout stacks. */
 @media (min-width: 768px) {
-  .form-aside { position: sticky; top: 96px; }
+  /* Clear the 110px sticky masthead plus a comfortable gap. */
+  .form-aside { position: sticky; top: 130px; }
+  /* Request-service aside: fill the height below the masthead and center its
+     cards vertically, so there is space above and below as the form scrolls
+     (instead of pinning the top, which clipped the card under the nav). */
+  .aside-center {
+    position: sticky; top: 110px;
+    min-height: calc(100vh - 110px);
+    justify-content: center;
+  }
 }
 
 
