@@ -98,6 +98,7 @@ function ReferenceBlock(p: { n: number }) {
 }
 
 export function ApplicationForm() {
+  const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -159,6 +160,18 @@ export function ApplicationForm() {
         <div style={s("background:#fff;border:1px solid #E3E9F0;border-radius:20px;box-shadow:0 10px 30px rgba(12,44,82,.07);padding:clamp(32px,5vw,52px);text-align:center")}>
           <h2 style={s("color:#0C2C52;font-size:1.5rem;font-weight:800;margin:0 0 10px")}>Online submission isn&apos;t available right now</h2>
           <p style={s("color:#0b1016;font-size:1.05rem;line-height:1.6;margin:0 auto 18px;max-width:52ch")}>Please <a href="/Kirpa-Employment-Application-Fillable.pdf" download style={s("color:#15589A;font-weight:700")}>download the application</a>, fill it out, and email it to <a href="mailto:kirpahhc@gmail.com" style={s("color:#15589A;font-weight:700")}>kirpahhc@gmail.com</a> — or call <a href="tel:+17039395287" style={s("color:#15589A;font-weight:700;text-decoration:none")}>703-939-5287</a>.</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!open) {
+    return (
+      <div style={s("flex:2;min-width:300px")}>
+        <div style={s("background:#fff;border:1px solid #E3E9F0;border-radius:20px;box-shadow:0 10px 30px rgba(12,44,82,.07);padding:clamp(32px,5vw,52px);text-align:center")}>
+          <h2 style={s("color:#0C2C52;font-size:1.6rem;font-weight:800;margin:0 0 10px")}>Apply to join our team</h2>
+          <p style={s("color:#0b1016;font-size:1.08rem;line-height:1.6;margin:0 auto 24px;max-width:48ch")}>Complete our official employment application right here on the website — it takes about 10&ndash;15 minutes, and your completed application goes straight to our hiring team.</p>
+          <Btn onClick={() => setOpen(true)}>Fill out your application</Btn>
         </div>
       </div>
     );
