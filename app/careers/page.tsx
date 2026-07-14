@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { s } from "@/lib/style";
-import { CareerForm } from "@/components/forms/CareerForm";
+import { ApplicationForm } from "@/components/forms/ApplicationForm";
 import { Phone } from "@/components/DCIcon";
 
 export const metadata: Metadata = {
@@ -62,7 +62,7 @@ export default function CareersPage() {
       {/* Application */}
       <section id="apply" style={s("background:#F4F8FC;border-top:1px solid #E3E9F0")}>
         <div style={s("max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,80px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,44px);align-items:start")}>
-          <CareerForm />
+          <ApplicationForm />
 
           <aside className="form-aside" style={s("flex:1;min-width:260px;display:grid;gap:18px;align-content:start")}>
             <div style={s("background:#0C2C52;color:#C5D4E6;border-radius:18px;padding:28px")}>
